@@ -1,0 +1,170 @@
+﻿@model DTO.HealthInsuranceDTO.HealthDTO;
+<!-- Health insurance form -->
+<div class="hi_form">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <form action="">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="gender">
+                                <label class="label_gender">Gender</label>
+                                <div class="gender_option">
+                                    <label class="Lbtn btn1 active" role="button">
+                                        <input class="check" type="radio" value="Male" name="Gender"
+                                               checked="checked"> Male
+                                    </label>
+                                    <label class="Lbtn btn1" role="button">
+                                        <input class="check" type="radio" value="Female" name="Gender"> Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="text" id="student" class="form-control">
+                                    <label class="form-control-placeholder" for="student">Student</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="text" id="occupation" class="form-control">
+                                    <label class="form-control-placeholder" for="occupation">Occupation</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="text" id="Income" class="form-control">
+                                    <label class="form-control-placeholder" for="Income">Household Income</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="text" id="status" class="form-control">
+                                    <label class="form-control-placeholder" for="status">Martial Status</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="text" id="education" class="form-control">
+                                    <label class="form-control-placeholder" for="education">Education</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="number" id="living" class="form-control">
+                                    <label class="form-control-placeholder" for="living">
+                                        Number of people
+                                        living
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="text" id="height" class="form-control">
+                                    <label class="form-control-placeholder" for="height">Height</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="text" id="weight" class="form-control">
+                                    <label class="form-control-placeholder" for="weight">Weight</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group">
+                                <div class="form-group">
+                                    <input type="text" id="physician" class="form-control">
+                                    <label class="form-control-placeholder" for="physician">
+                                        Treated by Physician
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+
+                        <div class="col-12 col-md-6">
+                            <div class="gender">
+                                <label class="label_gender">
+                                    Do you have pre-existing conditions or are you a
+                                    smoker
+                                </label>
+                                <div class="gender_option">
+                                    <label class="Lbtn btn2 active" role="button">
+                                        <input class="check" type="radio" value="Yes" name="condition"
+                                               checked="checked"> Yes
+                                    </label>
+                                    <label class="Lbtn btn2" role="button">
+                                        <input class="check" type="radio" value="No" name="condition"> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-6"></div>
+                        <div class="col-6 ">
+                            <button data-next-id="slide2" validationdiv="slide1" id="shortHealthSlideOne"
+                                    class="btn btn-primary form-btn continue"
+                                    type="button">
+                                <span>Continue</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--  -->
+            <div class="col-12 col-md-4">
+                <div class="insurance-type wpb_column vc_column_container vc_col-sm-4">
+                    <div class="vc_column-inner ">
+                        <div class="wpb_wrapper">
+                            <div class="wpb_text_column wpb_content_element ">
+                                <div class="wpb_wrapper">
+                                    <div class="helpline-TN">
+                                        <div class="fa fa-phone"></div>
+                                        <div class="helpline">
+                                            <p>Want to speak to someone now?</p>
+                                            <h3 class="LPScriptNumber">(833) 286-3623</h3>
+                                        </div>
+                                    </div>
+                                    <h3>Looking for a better <strong>Health Insurance</strong> experience</h3>
+                                    <p>
+                                        <strong>FindQualityInsurance.com</strong> can connect you with the leading
+                                        carriers. Fill out the form or call us to get started!
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

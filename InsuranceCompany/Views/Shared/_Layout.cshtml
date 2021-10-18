@@ -1,34 +1,73 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - InsuranceCompany</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Insurance</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/slick-theme.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="top_header">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">InsuranceCompany</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="topH_inner">
+                    <div class="site_logo">
+                        <a href="index.html">
+                            <img src="https://findqualityinsurance.com/wp-content/uploads/2017/07/fqi-logo.png"
+                                 alt="logo">
+                        </a>
+                    </div>
+                    <div class="header_cta">
+                        <div class="social_header">
+                            <a href="#"><span><i class="fab fa-facebook-f"></i></span></a>
+                            <a href="#"><span><i class="fab fa-twitter"></i></span></a>
+                        </div>
+                        <div class="call_header">
+                            <a href="#">
+                                <button>
+
+                                    <span>
+                                        <i class="fas fa-phone-alt"></i>
+                                    </span>
+                                    <span>
+                                        <h3>Talk to an Expert</h3>
+                                        <h2>855-967-0999</h2>
+                                    </span>
+
+                                </button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+            <!-- header-btoom-Nav -->
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a asp-controller="Insurance" asp-action="MedicareInsurance">Medical Insurance</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Insurance" asp-action="HealthInsurance">Health Insurance</a>
+                        </li>
+                        <li>
+                            <a href="#">Life Insurance</a>
+                        </li>
+                        <li>
+                            <a href="#">Final Expense</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
+    <!-- Header end -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -40,9 +79,38 @@
             &copy; 2021 - InsuranceCompany - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".btn1").click(function () {
+                if ($(this).hasClass('active')) {
+                    $("[name=Gender]").attr('checked', true);
+                } else if ($(this).hasClass('active') !== false) {
+                    $("[name=Gender]").attr('checked', false);
+                }
+                $(".btn1").removeClass("active");
+                $(this).addClass("active");
+            });
+
+
+        });
+        $(document).ready(function () {
+            $(".btn2").click(function () {
+                if ($(this).hasClass('active')) {
+                    $("[name=Gender]").attr('checked', true);
+                } else if ($(this).hasClass('active') !== false) {
+                    $("[name=Gender]").attr('checked', false);
+                }
+                $(".btn2").removeClass("active");
+                $(this).addClass("active");
+            });
+
+
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
