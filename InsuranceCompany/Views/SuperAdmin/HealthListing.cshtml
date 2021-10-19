@@ -1,0 +1,85 @@
+﻿@model IList<DTO.HealthInsuranceDTO.HealthDTO>
+@{
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+}
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                </div>
+                <div class="card-body">
+                    <partial name="_HealthListGrid" />
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+</div>
+<script>
+$(document).ready(function() {
+    $("#dataTable").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "ajax": {
+                "url": "/SuperAdmin/HealthListing",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columnDefs": [{
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }],
+            "columns": [
+                { "data": "Id", "name": "Id", "autoWidth": true },
+                { "data": "Education", "name": "Education", "autoWidth": true },
+                { "data": "Occupation", "name": "Occupation", "autoWidth": true },
+                { "data": "HouseholdIncome", "name": "HouseholdIncome", "autoWidth": true },
+                { "data": "NumberOfPeopleLiving", "name": "NumberOfPeopleLiving", "autoWidth": true },
+                { "data": "Weight", "name": "Weight", "autoWidth": true },
+                { "data": "Height", "name": "Height", "autoWidth": true },
+                { "data": "IsMarried", "name": "IsMarried", "autoWidth": true },
+                { "data": "TreatedByPhysician", "name": "TreatedByPhysician", "autoWidth": true },
+                { "data": "PreExistingOrSmoker", "name": "PreExistingOrSmoker", "autoWidth": true },
+                { "data": "GenderId", "name": "GenderId", "autoWidth": true },
+                {
+                    "render": function (data, type, full, meta) { return '<a class="btn btn-info" href="/SuperAdmin/Edit/' + full.Id + '">Edit</a>'; }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return "<a href='#' class='btn btn-danger' onclick=DeleteData('" + row.Id + "'); >Delete</a>";
+                                   }
+                                   },
+                                   ]
+                                   });
+                                   });
+                                   function DeleteData(Id) {
+                                   if (confirm("Are you sure you want to delete ...?")) {
+                                   Delete(CustomerID);
+                                   } else {
+                                   return false;
+                                   }
+                                   }
+                                   function Delete(Id) {
+                                       var url = '@Url.Content("~/")' + "SuperAdmin/Delete" ;
+                                   $.post(url, { ID: Id }, function(data) {
+                                   if (data) {
+                                       oTable = $('#dataTable').DataTable();
+                                   oTable.draw();
+                                   } else {
+                                   alert("Something Went Wrong!");
+                                   }
+                                   });
+                                   }
+
+</script>
