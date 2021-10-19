@@ -68,10 +68,8 @@
         </div>
     </header>
     <!-- Header end -->
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="hi_form">
+        @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted">
@@ -88,38 +86,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".btn1").click(function () {
-                if ($(this).hasClass('active')) {
-                    $("[name=Gender]").attr('checked', true);
-                } else if ($(this).hasClass('active') !== false) {
-                    $("[name=Gender]").attr('checked', false);
-                }
-                $(".btn1").removeClass("active");
-                $(this).addClass("active");
-            });
-
-
-        });
-        $(document).ready(function () {
-            $(".btn2").click(function () {
-                if ($(this).hasClass('active')) {
-                    $("[name=Gender]").attr('checked', true);
-                } else if ($(this).hasClass('active') !== false) {
-                    $("[name=Gender]").attr('checked', false);
-                }
-                $(".btn2").removeClass("active");
-                $(this).addClass("active");
-            });
-
-
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

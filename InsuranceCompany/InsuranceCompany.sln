@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsuranceCompany", "InsuranceCompany.csproj", "{53C3AB83-8520-4475-9D56-7CFEFC57FDA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsuranceCompany", "InsuranceCompany.csproj", "{53C3AB83-8520-4475-9D56-7CFEFC57FDA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "..\DTO\DTO.csproj", "{A6B85146-5410-46D5-A9EB-490D1E78E8E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "..\DTO\DTO.csproj", "{A6B85146-5410-46D5-A9EB-490D1E78E8E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "..\Data\Data.csproj", "{20985D89-DE74-4A7A-8775-74B863FFCBD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\Data\Data.csproj", "{20985D89-DE74-4A7A-8775-74B863FFCBD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "..\Service\Service.csproj", "{8E7D199B-3A70-4225-9C1F-9B3071E6559E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "..\Service\Service.csproj", "{8E7D199B-3A70-4225-9C1F-9B3071E6559E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5FB33653-4310-4628-8A1C-196B68037D75} = {5FB33653-4310-4628-8A1C-196B68037D75}
+		{FCC4E784-9A05-47C1-B538-E0AB2E09EF12} = {FCC4E784-9A05-47C1-B538-E0AB2E09EF12}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.csproj", "{5FB33653-4310-4628-8A1C-196B68037D75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\Common\Common.csproj", "{5FB33653-4310-4628-8A1C-196B68037D75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENUM", "..\ENUM\ENUM.csproj", "{FCC4E784-9A05-47C1-B538-E0AB2E09EF12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ENUM", "..\ENUM\ENUM.csproj", "{FCC4E784-9A05-47C1-B538-E0AB2E09EF12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

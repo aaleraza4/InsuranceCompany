@@ -21,7 +21,7 @@ namespace Data.Entities
         public string Height { get; set; }
         public bool? IsMarried { get; set; }
         public bool? TreatedByPhysician { get; set; }
-        public bool? CurrentlyInsured { get; set; }
+        //public bool? CurrentlyInsured { get; set; }
         public bool? PreExistingOrSmoker { get; set; }
 
         [ForeignKey("Gender")]

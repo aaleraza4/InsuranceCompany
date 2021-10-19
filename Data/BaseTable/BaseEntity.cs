@@ -17,6 +17,8 @@ namespace Data.BaseTable
         public DateTime? UpdatedDate { get; set; }
         public int? DeletedBy { get; set; }
         public bool IsDeleted { get; set; } = false;
+        public bool IsActive { get; set; } = true;
+
         public DateTime? DeletedDate { get; set; }
     }
     public abstract class BasePrimaryKeyHolder<T>

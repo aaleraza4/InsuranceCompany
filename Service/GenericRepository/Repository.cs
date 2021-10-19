@@ -20,7 +20,7 @@ namespace NT_Service.GenericRepository
         public Repository(Microsoft.EntityFrameworkCore.DbContext dbContext)
         {
             _dbContext = dbContext;
-            this.ctx = _dbContext;
+
         }
         public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {

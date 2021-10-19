@@ -28,6 +28,7 @@ namespace Service.ServiceAction
         public async Task Seed(int userId)
         {
             await AddGender();
+            await _insuranceDBContext.SaveChangesAsync();
         }
         private async Task AddGender()
         {

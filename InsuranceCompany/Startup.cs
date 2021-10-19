@@ -76,7 +76,7 @@ namespace InsuranceCompany
             var dbContext = serviceProvider.GetRequiredService<DbContext>();
             dbContext.Database.Migrate();
             var userid = CreateSuperAdmin(serviceProvider);
-
+            seed.Seed(userid).Wait();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
