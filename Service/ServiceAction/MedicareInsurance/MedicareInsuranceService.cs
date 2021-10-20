@@ -40,7 +40,7 @@ namespace Service.ServiceAction.MedicareInsurance
         public List<MedicareDTO> GetMedicareInsurances()
         {
 
-            return GetAll(x => x.IsActive && x.IsDeleted != true).Include(x=>x.User).Select(x => new MedicareDTO
+            var model = GetAll(x => x.IsActive && x.IsDeleted != true).Include(x=>x.User).Select(x => new MedicareDTO
             {
                 GenderId = x.GenderId,
                 Address = x.User.Address,
@@ -56,8 +56,9 @@ namespace Service.ServiceAction.MedicareInsurance
                 State = x.User.State,
                 Uninsurable = x.Uninsurable == true ? 1 : 0,
                 ZipCode = x.User.ZipCode,
-                UserId = x.User.Id
+                UserId = x.User.Id,
             }).ToList();
+            return model;
         }
 
         public Task RemoveMedicareInsurance(int Templateid, int userid)
