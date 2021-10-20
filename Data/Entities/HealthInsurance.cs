@@ -27,7 +27,7 @@ namespace Data.Entities
         [ForeignKey("Gender")]
         public int GenderId { get; set; }
         public string IPAddress { get; set; }
-
+        public string LeadID { get; set; }
         public virtual Gender Gender { get; set; }
     }
 }

@@ -45,7 +45,8 @@ namespace Service.ServiceAction.HealthInsurance
                 PreExistingOrSmoker = x.PreExistingOrSmoker == true ?1:0,
                 TreatedByPhysician = x.TreatedByPhysician == true ?1:0,
                 Weight = x.Weight,
-                IpAddress = x.IPAddress
+                IpAddress = x.IPAddress,
+                LeadId = x.LeadID
             }).ToList();
         }
 

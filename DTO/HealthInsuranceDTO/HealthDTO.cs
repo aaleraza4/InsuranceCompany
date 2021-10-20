@@ -45,6 +45,8 @@ namespace DTO.HealthInsuranceDTO
         public bool InstructionCheck { get; set; }
 
         public string IpAddress { get; set; }
+        public string LeadId { get; set; }
+
         public int GenderId { get; set; }
         public IEnumerable<SelectListItem> EducationList { get; set; }
         public IEnumerable<SelectListItem> OccupationList { get; set; }

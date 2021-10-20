@@ -33,7 +33,7 @@ namespace DTO.MedicareDTO
         [Required(ErrorMessage = "This field is required.")]
         public string IPAddress { get; set; }
         [Required(ErrorMessage = "This field is required.")]
-        public int? LeadID { get; set; }
+        public string LeadID { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         public DateTime? DOB { get; set; }
         [Required(ErrorMessage = "This field is required.")]

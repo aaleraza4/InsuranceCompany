@@ -20,7 +20,7 @@ namespace Data.Model
         public int? ZipCode { get; set; }
         public string HomePhoneNumber { get; set; }
         public string IPAddress { get; set; }
-        public int? LeadID { get; set; }
+        public string LeadID { get; set; }
         public DateTime? DOB { get; set; }
         public ICollection<MedicalInsurance> medicalInsurances { get; set; }
     }

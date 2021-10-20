@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Gender</th>
                 <th>IP Address</th>
+                <th>Lead Id</th>
                 <th>Education</th>
                 <th>Occupation</th>
                 <th>Household Income</th>
@@ -32,7 +33,7 @@
                         <td width="5%" class="text-center">@_inc</td>
                         <td>@(item.GenderId==1?"Male":"Female")</td>
                         <td>@item.IpAddress</td>
-
+                        <td>@item.LeadId</td>
                         <td>@item.Education?.GetEnumDescription()</td>
                         <td>@item.Occupation?.GetEnumDescription()</td>
                         <td>@item.HouseholdIncome</td>
