@@ -5,21 +5,22 @@
     var _inc = 1;
 }
 <div class="table-responsive">
-    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <table class="table table-bordered" id="MedicalDatable" width="100%" cellspacing="0">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Is Student</th>
-                <th>Education</th>
-                <th>Occupation</th>
-                <th>Household Income</th>
-                <th>People Living</th>
-                <th>Weight</th>
-                <th>Height</th>
-                <th>Married</th>
-                <th>Treated By Physician</th>
-                <th>Pre-Existing Or Smoker</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>IP Address</th>
+                <th>Email</th>
                 <th>Gender</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Pre-Existing Or Smoker</th>
+                <th>Uninsurable</th>
+                <th>Currently Insurred</th>
+
             </tr>
         </thead>
         <tbody>
@@ -27,20 +28,20 @@
             {
                 @foreach (var item in Model)
                 {
-                    @*<tr>
-                        <td width="5%" class="text-center">@_inc</td>
-                        <td>@(item.GenderId==1?"Male":"Female")</td>
-                        <td>@item.Education?.GetEnumDescription()</td>
-                        <td>@item.Occupation?.GetEnumDescription()</td>
-                        <td>@item.HouseholdIncome</td>
-                        <td>@item.NumberOfPeopleLiving</td>
-                        <td>@item.Weight</td>
-                        <td>@item.Height</td>
-                        <td>@Html.Raw(Helper.GetStatus(item.IsMarried))</td>
-                        <td>@Html.Raw(Helper.GetStatus(item.TreatedByPhysician))</td>
-                        <td>@Html.Raw(Helper.GetStatus(item.TreatedByPhysician))</td>
-                        <td>@Html.Raw(Helper.GetStatus(item.PreExistingOrSmoker))</td>
-                    </tr>*@
+            <tr>
+                <td width="5%" class="text-center">@_inc</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.IPAddress</td>
+                <td>@item.Email</td>
+                <td>@(item.GenderId == 1?"Male":"Female")</td>
+                <td>@item.Address</td>
+                <td>@item.City</td>
+                <td>@item.State</td>
+                <td>@Html.Raw(Helper.GetStatus(item.Smoker))</td>
+                <td>@Html.Raw(Helper.GetStatus(item.Uninsurable))</td>
+                <td>@Html.Raw(Helper.GetStatus(item.CurrentlyInsured))</td>
+            </tr>
                     _inc = _inc + 1;
                 }
             }
