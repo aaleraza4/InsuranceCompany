@@ -100,6 +100,8 @@ namespace InsuranceCompany
                     name: "default",
                     pattern: "{controller=Insurance}/{action=MedicareInsurance}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHub<NotificationHub>("/notificationhub");
+
             });
         }
 

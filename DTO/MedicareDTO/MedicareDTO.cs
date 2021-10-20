@@ -9,25 +9,44 @@ namespace DTO.MedicareDTO
 {
     public class MedicareDTO
     {
+        [Required(ErrorMessage = "This field is required.")]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public string LastName { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public string State { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public string City { get; set; }
         [EmailAddress]
+        [Required(ErrorMessage = "This field is required.")]
         public string Email { get; set; }
-
+        [Required(ErrorMessage = "This field is required.")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Please enter only digits.")]
+        [Range(0, 6, ErrorMessage = "Range is between 0 to 6.")]
         public int? ZipCode { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Please enter only digits.")]
+        [Range(0, 15, ErrorMessage = "Range is between 0 to 15.")]
         public string HomePhoneNumber { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public string IPAddress { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public int? LeadID { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public DateTime? DOB { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public int Uninsurable { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public int GenderId { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public int UserId { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public int CurrentlyInsured { get; set; }
+        [Required(ErrorMessage = "This field is required.")]
         public int Smoker { get; set; }
-        public int InstructionCheck { get; set; }
+        public bool InstructionCheck { get; set; }
 
     }
 }

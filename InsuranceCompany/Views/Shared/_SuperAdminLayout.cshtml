@@ -337,6 +337,7 @@
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
     <script>
+        
         var connection = new signalR.HubConnectionBuilder().withUrl("/notificationhub").build();
         connection.on("ReceiveNotifiction", function (counter) {
             $("#notification").text(counter);

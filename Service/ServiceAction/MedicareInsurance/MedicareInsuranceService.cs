@@ -77,7 +77,7 @@ namespace Service.ServiceAction.MedicareInsurance
             MedicalModel.IsActive = true;
             MedicalModel.IsDeleted = false;
             await Add(MedicalModel);
-            await Save();
+            
             return UserID;
         }
 
