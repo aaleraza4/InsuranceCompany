@@ -32,6 +32,14 @@ namespace InsuranceCompany.Controllers
         {
             return View();
         }
+        public IActionResult LifeInsurance()
+        {
+            return View();
+        }
+        public IActionResult FinalExpense()
+        {
+            return View();
+        }
         public IActionResult HealthInsurance()
         {
             var model = new HealthDTO();
