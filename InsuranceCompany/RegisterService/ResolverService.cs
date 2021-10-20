@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NT_Service.GenericRepository;
 using Service.ServiceAction;
 using Service.ServiceAction.HealthInsurance;
+using Service.ServiceAction.MedicareInsurance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace Insurance.RegisterService
             services.AddScoped<SeederService>();
             services.AddScoped<UserSessionProfileService>();
             services.AddScoped<IHealthInsuranceService, HealthInsuranceService>();
+            services.AddScoped<IMedicareInsuranceService, MedicareInsuranceService>();
+
             #endregion
         }
     }

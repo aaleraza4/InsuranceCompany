@@ -1,21 +1,50 @@
-﻿<div class="table-responsive">
+﻿@model IList<DTO.HealthInsuranceDTO.HealthDTO>
+@using Common.Helper;
+@{
+
+    var _inc = 1;
+}
+<div class="table-responsive">
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>IsStudent</th>
+                <th>Gender</th>
                 <th>Education</th>
                 <th>Occupation</th>
-                <th>HouseholdIncome</th>
-                <th>NumberOfPeopleLiving</th>
+                <th>Household Income</th>
+                <th>People Living</th>
                 <th>Weight</th>
                 <th>Height</th>
-                <th>IsMarried</th>
-                <th>TreatedByPhysician</th>
-                <th>PreExistingOrSmoker</th>
-                <th>GenderId</th>
-
+                <th>Married</th>
+                <th>Student</th>
+                <th>Treated By Physician</th>
+                <th>Pre-Existing Or Smoker</th>
             </tr>
         </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="5%" class="text-center">@_inc</td>
+                        <td>@(item.GenderId==1?"Male":"Female")</td>
+                        <td>@item.Education?.GetEnumDescription()</td>
+                        <td>@item.Occupation?.GetEnumDescription()</td>
+                        <td>@item.HouseholdIncome</td>
+                        <td>@item.NumberOfPeopleLiving</td>
+                        <td>@item.Weight</td>
+                        <td>@item.Height</td>
+                        <td>@Html.Raw(Helper.GetStatus(item.IsMarried))</td>
+                        <td>@Html.Raw(Helper.GetStatus(item.IsStudent))</td>
+                        <td>@Html.Raw(Helper.GetStatus(item.TreatedByPhysician))</td>
+                        <td>@Html.Raw(Helper.GetStatus(item.PreExistingOrSmoker))</td>
+                    </tr>
+                    _inc = _inc + 1;
+                }
+            }
+
+        </tbody>
     </table>
 </div>

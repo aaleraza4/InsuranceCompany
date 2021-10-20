@@ -15,10 +15,10 @@ namespace DTO.HealthInsuranceDTO
         [Required(ErrorMessage = "Please select One Option.")]
         public int IsStudent { get; set; }
         [Required(ErrorMessage = "Please select One Option.")]
-        public EducationType Education { get; set; }
+        public EducationType? Education { get; set; }
 
         [Required(ErrorMessage = "Please select One Option.")]
-        public OccupationType Occupation { get; set; }
+        public OccupationType? Occupation { get; set; }
         
         [Display(Name = "HouseHold Income")]
         [Required(ErrorMessage = "This field is required.")]

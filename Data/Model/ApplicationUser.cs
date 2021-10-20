@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Data.Entities;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,7 @@ namespace Data.Model
         public string HomePhoneNumber { get; set; }
         public string IPAddress { get; set; }
         public int? LeadID { get; set; }
+        public DateTime? DOB { get; set; }
+        public ICollection<MedicalInsurance> medicalInsurances { get; set; }
     }
 }

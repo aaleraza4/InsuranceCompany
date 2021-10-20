@@ -11,7 +11,7 @@ namespace Service.ServiceAction.MedicareInsurance
     {
         Task<long> SaveUpdateMedicareInsurance(MedicareDTO model);
         bool CheckExisting(MedicareDTO model);
-        IQueryable<MedicareDTO> GetMedicareInsurances();
+        List<MedicareDTO> GetMedicareInsurances();
         MedicareDTO GetMedicareInsurancebyId(int Templateid);
         Task RemoveMedicareInsurance(int Templateid, int userid);
         bool CheckMedicareInsurance(int MedicareInsuranceId);

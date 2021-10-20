@@ -1,4 +1,5 @@
-﻿using DTO.HealthInsuranceDTO;
+﻿using Data.Model;
+using DTO.HealthInsuranceDTO;
 using Microsoft.EntityFrameworkCore;
 using NT_Service.GenericRepository;
 using System;
@@ -33,7 +34,7 @@ namespace Service.ServiceAction.HealthInsurance
         {
             return GetAll(x => x.IsActive && x.IsDeleted != true).Select(x => new HealthDTO
             {
-                Education = x.Education.Value,
+                Education = x.Education,
                 GenderId = x.GenderId,
                 Height = x.Height,
                 HouseholdIncome = x.HouseholdIncome,
@@ -71,5 +72,20 @@ namespace Service.ServiceAction.HealthInsurance
             await Add(HealthModel);
             return HealthModel.Id;
         }
+
+        //private async Task<int> AddUserEntry(HealthDTO model)
+        //{
+        //    var user = new ApplicationUser();
+        //    user.Email = model.Email;
+        //    user.UserName = model.Email;
+        //    user.EmailConfirmed = true;
+        //    user.HomePhoneNumber = model.HomePhoneNumber;
+        //    user.IPAddress = model.IPAddress;
+        //    user.ZipCode = model.ZipCode;
+        //    var result = await userManager.CreateAsync(user, "Admin#123");
+        //    if (result.Succeeded)
+        //        return user.Id;
+        //    return 0;
+        //}
     }
 }

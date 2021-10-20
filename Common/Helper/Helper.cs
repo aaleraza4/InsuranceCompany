@@ -206,5 +206,18 @@ namespace Common.Helper
             return languages;
         }
 
+        public static string GetStatus(long status)
+        {
+            string html_vals = "";
+            if (status == 1)
+            {
+                html_vals = "<label class='badge badge-primary p-1'>Yes</label> ";
+            }
+            else
+            {
+                html_vals = "<label class='badge badge-danger p-1'>No</label> ";
+            }
+            return html_vals;
+        }
     }
 }

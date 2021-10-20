@@ -1,4 +1,5 @@
 ﻿using Data.BaseTable;
+using Data.Model;
 using ENUM.Education;
 using ENUM.Occupation;
 using System;
@@ -21,9 +22,8 @@ namespace Data.Entities
         public string Height { get; set; }
         public bool? IsMarried { get; set; }
         public bool? TreatedByPhysician { get; set; }
-        //public bool? CurrentlyInsured { get; set; }
         public bool? PreExistingOrSmoker { get; set; }
-
+        public bool? InstructionCheck { get; set; }
         [ForeignKey("Gender")]
         public int GenderId { get; set; }
         public virtual Gender Gender { get; set; }

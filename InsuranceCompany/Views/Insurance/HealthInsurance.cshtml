@@ -30,7 +30,7 @@
                     </div>
                     <!--  -->
                     <div class="col-12 col-md-6">
-                        <div class="form_groups input-group">
+                        <div class="form_groups input-group mb-1">
                             <div class="form-group">
                                 <select class="form-control" asp-for="IsStudent">
                                     <option value="">Are you a student?</option>
@@ -44,7 +44,7 @@
                     <!--  -->
 
                     <div class="col-12 col-md-6">
-                        <div class="form_groups input-group">
+                        <div class="form_groups input-group mb-1">
                             <label class="form-control-placeholder" asp-for="Occupation">Occupation</label>
                             <div class="form-group">
                                 <select class="form-control" asp-for="Occupation" asp-items="Model.OccupationList">
@@ -56,7 +56,7 @@
                     </div>
                     <!--  -->
                     <div class="col-12 col-md-6">
-                        <div class="form_groups input-group">
+                        <div class="form_groups input-group mb-1">
                             <div class="form-group">
                                 <input type="text" id="Income" class="form-control" asp-for="HouseholdIncome">
                                 <label class="form-control-placeholder" asp-for="HouseholdIncome"></label>
@@ -66,7 +66,7 @@
                     </div>
                     <!--  -->
                     <div class="col-12 col-md-6">
-                        <div class="form_groups input-group">
+                        <div class="form_groups input-group mb-1">
                             <div class="form-group">
                                 <select class="form-control" asp-for="IsMarried">
                                     <option value="">Are you a Married?</option>
@@ -79,7 +79,7 @@
                     </div>
                     <!--  -->
                     <div class="col-12 col-md-6">
-                        <div class="form_groups input-group">
+                        <div class="form_groups input-group mb-1">
                             <label class="form-control-placeholder" asp-for="Education">Education</label>
                             <div class="form-group">
                                 <select class="form-control" asp-for="Education" asp-items="Model.EducationList">
@@ -92,7 +92,7 @@
                     </div>
                     <!--  -->
                     <div class="col-12 col-md-6">
-                        <div class="form_groups input-group">
+                        <div class="form_groups input-group mb-1">
                             <div class="form-group">
                                 <input type="text" id="Income" class="form-control" asp-for="NumberOfPeopleLiving">
                                 <label class="form-control-placeholder" asp-for="NumberOfPeopleLiving"></label>
@@ -102,19 +102,21 @@
                     </div>
                     <!--  -->
                     <div class="col-12 col-md-6">
-                        <div class="form_groups input-group">
+                        <div class="form_groups input-group mb-1">
                             <div class="form-group">
-                                <input type="text" id="height" class="form-control">
+                                <input type="text" id="height" class="form-control" asp-for="Height">
                                 <label class="form-control-placeholder" for="height">Height</label>
+                                <span asp-validation-for="Education" class="text-danger dash-error-txt"></span>
                             </div>
                         </div>
                     </div>
                     <!--  -->
                     <div class="col-12 col-md-6">
-                        <div class="form_groups input-group">
+                        <div class="form_groups input-group mb-1">
                             <div class="form-group">
-                                <input type="text" id="weight" class="form-control">
+                                <input type="text" id="weight" class="form-control" asp-for="Weight">
                                 <label class="form-control-placeholder" for="weight">Weight</label>
+                                <span asp-validation-for="Education" class="text-danger dash-error-txt"></span>
                             </div>
                         </div>
                     </div>
