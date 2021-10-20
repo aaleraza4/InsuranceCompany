@@ -24,7 +24,9 @@ namespace InsuranceCompany.Controllers
         private readonly IConfiguration _configuration;
         private static string conn = string.Empty;
         private readonly IHubContext<NotificationHub> _hubContext;
-        public static int counteer = 0;
+        public static int counter = 0;
+        public static int Medcounter = 0;
+
         NotificationHub NotificationHub = new NotificationHub();
         public SuperAdminController(IMedicareInsuranceService medicalInsuranceService,IHealthInsuranceService healthInsuranceService, InsuranceDBContext insuranceDBContext, IConfiguration configuration, IHubContext<NotificationHub> hubContext)
         {
@@ -76,8 +78,8 @@ namespace InsuranceCompany.Controllers
         {
             if (e.Type == SqlNotificationType.Change)
             {
-                counteer+=1;
-                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counteer);
+                counter+=1;
+                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter);
             }
             
         }
@@ -92,6 +94,48 @@ namespace InsuranceCompany.Controllers
         {
 
             return View(_medicalInsuranceService.GetMedicareInsurances());
+        }
+        public IEnumerable<MedicalInsurance> GetAllMessagesforMedicalInsurance()
+        {
+            conn = _configuration.GetConnectionString("db_string");
+            SqlDependency.Start(conn);
+            var messages = new List<MedicalInsurance>();
+            using (var connection = new SqlConnection(conn))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(@"SELECT [Id]
+                FROM [dbo].[MedicalInsurances]", connection))
+                {
+                    command.Notification = null;
+
+                    var dependency = new SqlDependency(command);
+                    dependency.OnChange += new OnChangeEventHandler(dependency_OnChangeMedicalInsurance);
+
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+
+                    var reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        messages.Add(item: new MedicalInsurance
+                        {
+                            Id = (int)reader["Id"]
+                        });
+                    }
+                }
+            }
+            return messages;
+        }
+
+        public void dependency_OnChangeMedicalInsurance(object sender, SqlNotificationEventArgs e)
+        {
+            if (e.Type == SqlNotificationType.Change)
+            {
+                Medcounter += 1;
+                _hubContext.Clients.All.SendAsync("MedicalInsurance", Medcounter);
+            }
+
         }
     }
 }

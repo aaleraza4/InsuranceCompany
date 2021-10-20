@@ -344,8 +344,16 @@
             $('#spandiv').append(" <br />");
             $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
 
-            $(".span").text("New User is Added");
+            $(".span").text("New User Submited HealthInsurance Form");
             getAllMessages();
+        });
+        connection.on("MedicalInsurance", function (counter) {
+            $("#notification").text(counter);
+            $('#spandiv').append(" <br />");
+            $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
+
+            $(".span").text("New User Submited Medical Insurance Form");
+            getAllMessagesforMedicalInsurance();
         });
         connection.start().then(function () {
             console.log("connection started")
@@ -353,12 +361,26 @@
 
             //notifications.onconn();
             getAllMessages();
+            getAllMessagesforMedicalInsurance();
 
         });
         function getAllMessages() {
 
             $.ajax({
                 url: '/SuperAdmin/GetAllMessages',
+                contentType: 'application/html ; charset:utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    console.log(result);
+
+                }
+            });
+        }
+        function getAllMessagesforMedicalInsurance() {
+
+            $.ajax({
+                url: '/SuperAdmin/GetAllMessagesforMedicalInsurance',
                 contentType: 'application/html ; charset:utf-8',
                 type: 'GET',
                 dataType: 'html',
