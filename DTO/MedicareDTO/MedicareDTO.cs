@@ -24,11 +24,11 @@ namespace DTO.MedicareDTO
         public string Email { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "Please enter only digits.")]
-        [Range(0, 6, ErrorMessage = "Range is between 0 to 6.")]
+        [Range(0, 1000000000, ErrorMessage = "Range is between 0 to 10000000000.")]
         public int? ZipCode { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "Please enter only digits.")]
-        [Range(0, 15, ErrorMessage = "Range is between 0 to 15.")]
+        [Range(0, 1000000000, ErrorMessage = "Range is between 0 to 10000000000.")]
         public string HomePhoneNumber { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         public string IPAddress { get; set; }
