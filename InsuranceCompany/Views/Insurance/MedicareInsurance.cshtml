@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8">
-                <form action="">
+                <form method="post" action="@Url.Action("MedicareInsurance","Insurance")">
                     <div class="row">
                         <input type="hidden" asp-for="IPAddress" />
                         <input type="hidden" asp-for="GenderId" value="1" />
@@ -47,7 +47,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="city" class="form-control">
+                                    <input type="text" id="city" class="form-control" asp-for="City">
                                     <label class="form-control-placeholder" for="city">City</label>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="state" class="form-control">
+                                    <input type="text" id="state" class="form-control" asp-for="City">
                                     <label class="form-control-placeholder" for="state">State</label>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="number" id="zip" class="form-control">
+                                    <input type="number" id="zip" class="form-control" asp-for="ZipCode">
                                     <label class="form-control-placeholder" for="zip">Zip code</label>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="tel" id="phone" class="form-control">
+                                    <input type="tel" id="phone" class="form-control" asp-for="HomePhoneNumber">
                                     <label class="form-control-placeholder" for="phone">Homephone</label>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="email" id="email" class="form-control">
+                                    <input type="email" id="email" class="form-control" asp-for="Email">
                                     <label class="form-control-placeholder" for="email">Email</label>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="date" id="date" class="form-control">
+                                    <input type="date" id="date" class="form-control" asp-for="DOB">
                                     <label class="form-control-placeholder" for="date">Date of birth</label>
                                 </div>
                             </div>
@@ -127,18 +127,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-5">
-                        <div class="col-6">
-                            <button data-next-id="slide2" validationdiv="slide1" id="shortHealthSlideOne"
-                                    class="btn btn-primary form-btn back" type="button">
-                                <span>Back</span>
-                            </button>
+                    <div class="row">
+                        <div class="col-lg-12 col">
+                            <div class="checkbox checkbox-success">
+                                <input id="leadid_tcpa_disclosure" type="checkbox" checked asp-for="InstructionCheck">
+                                <label for="leadid_tcpa_disclosure">
+                                    <strong>By clicking Submit, you agree to our <a href="/privacy-policy" target="_blank">Privacy Policy</a></strong>.<br>You further provide your express consent by electronic signature to be contacted by Trusted Consumer and our <a href="javascript:void(0);" data-toggle="modal" data-target="#providers" id="show_providers">providers</a> agents via: automated telephone dialing systems, artificial or prerecorded voices, by email, SMS text message or live agent to the phone number provided. Your phone carrier's message and data rates may apply. I understand I can revoke this consent at any time and consent is not required as a condition of purchase.
+                                </label>
+                            </div>
                         </div>
+                    </div>
+                    <div class="row mt-5">
                         <div class="col-6 ">
                             <button data-next-id="slide2" validationdiv="slide1" id="shortHealthSlideOne"
                                     class="btn btn-primary form-btn continue"
-                                    type="button">
-                                <span>Continue</span>
+                                    type="submit">
+                                <span>Submit</span>
                             </button>
                         </div>
                     </div>

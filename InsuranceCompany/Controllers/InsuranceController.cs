@@ -5,6 +5,7 @@ using ENUM.Education;
 using ENUM.Occupation;
 using Microsoft.AspNetCore.Mvc;
 using Service.ServiceAction.HealthInsurance;
+using Service.ServiceAction.MedicareInsurance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,12 @@ namespace InsuranceCompany.Controllers
     public class InsuranceController : Controller
     {
         private readonly IHealthInsuranceService _healthInsuranceService;
-        public InsuranceController(IHealthInsuranceService healthInsuranceService)
+        private readonly IMedicareInsuranceService _medicareInsuranceService;
+
+        public InsuranceController(IMedicareInsuranceService MedicareInsuranceService,IHealthInsuranceService healthInsuranceService)
         {
             _healthInsuranceService = healthInsuranceService;
+            _medicareInsuranceService = MedicareInsuranceService;
         }
         public IActionResult Index()
         {
@@ -36,9 +40,14 @@ namespace InsuranceCompany.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult MedicareInsurance(MedicareDTO medicareDTO)
+        public async Task<IActionResult> MedicareInsurance(MedicareDTO medicareDTO)
         {
-            return View();
+            long Id = 0;
+            if (medicareDTO != null)
+            {
+                Id = await _medicareInsuranceService.SaveUpdateMedicareInsurance(medicareDTO);
+            }
+            return RedirectToAction("SuccessPage", "Insurance", new { Id = Id });
         }
         [HttpPost]
         public async Task<IActionResult> HealthInsurance(HealthDTO healthDTO)

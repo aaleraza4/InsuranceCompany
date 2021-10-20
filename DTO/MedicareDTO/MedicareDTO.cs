@@ -27,5 +27,7 @@ namespace DTO.MedicareDTO
         public int UserId { get; set; }
         public int CurrentlyInsured { get; set; }
         public int Smoker { get; set; }
+        public int InstructionCheck { get; set; }
+
     }
 }
