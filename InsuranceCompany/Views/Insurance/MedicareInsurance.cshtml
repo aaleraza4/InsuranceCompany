@@ -1,15 +1,25 @@
-﻿<div class="hi_form">
+﻿@model DTO.MedicareDTO.MedicareDTO;
+
+
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<div class="hi_form">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8">
                 <form action="">
                     <div class="row">
-
+                        <input type="hidden" asp-for="IPAddress" />
+                        <input type="hidden" asp-for="GenderId" value="1" />
+                        <input type="hidden" asp-for="Smoker" value="1" />
+                        <input type="hidden" asp-for="Uninsurable" value="1" />
+                        <input type="hidden" asp-for="CurrentlyInsured" value="1" />
                         <!--  -->
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="fname" class="form-control" required>
+                                    <input type="text" id="fname" class="form-control" asp-for="FirstName">
                                     <label class="form-control-placeholder" for="fname">First name </label>
                                 </div>
                             </div>
@@ -19,7 +29,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="lname" class="form-control" required>
+                                    <input type="text" id="lname" class="form-control" asp-for="LastName">
                                     <label class="form-control-placeholder" for="lname">Last name</label>
                                 </div>
                             </div>
@@ -28,7 +38,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="address" class="form-control" required>
+                                    <input type="text" id="address" class="form-control" asp-for="Address">
                                     <label class="form-control-placeholder" for="address">Address</label>
                                 </div>
                             </div>
@@ -37,7 +47,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="city" class="form-control" required>
+                                    <input type="text" id="city" class="form-control">
                                     <label class="form-control-placeholder" for="city">City</label>
                                 </div>
                             </div>
@@ -46,7 +56,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="state" class="form-control" required>
+                                    <input type="text" id="state" class="form-control">
                                     <label class="form-control-placeholder" for="state">State</label>
                                 </div>
                             </div>
@@ -55,7 +65,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="number" id="zip" class="form-control" required>
+                                    <input type="number" id="zip" class="form-control">
                                     <label class="form-control-placeholder" for="zip">Zip code</label>
                                 </div>
                             </div>
@@ -64,7 +74,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="tel" id="phone" class="form-control" required>
+                                    <input type="tel" id="phone" class="form-control">
                                     <label class="form-control-placeholder" for="phone">Homephone</label>
                                 </div>
                             </div>
@@ -73,7 +83,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="email" id="email" class="form-control" required>
+                                    <input type="email" id="email" class="form-control">
                                     <label class="form-control-placeholder" for="email">Email</label>
                                 </div>
                             </div>
@@ -82,7 +92,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="date" id="date" class="form-control" required>
+                                    <input type="date" id="date" class="form-control">
                                     <label class="form-control-placeholder" for="date">Date of birth</label>
                                 </div>
                             </div>
@@ -163,3 +173,74 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts{
+    <script>
+        $(".Genderbtn1").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".Genderbtn2").removeClass("active");
+            $(this).addClass("active");
+            $('#GenderId').val(1);
+        });
+        $(".Genderbtn2").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+
+            $(".Genderbtn1").removeClass("active");
+            $(this).addClass("active");
+            $('#GenderId').val(2);
+        });
+
+        $(".PreExisting1").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".PreExisting2").removeClass("active");
+            $(this).addClass("active");
+            $('#PreExistingOrSmoker').val(1);
+        });
+        $(".PreExisting2").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".PreExisting1").removeClass("active");
+            $(this).addClass("active");
+            $('#PreExistingOrSmoker').val(2);
+        });
+
+
+        $(".Treated1").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".Treated2").removeClass("active");
+            $(this).addClass("active");
+            $('#TreatedByPhysician').val(1);
+        });
+        $(".Treated2").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".Treated1").removeClass("active");
+            $(this).addClass("active");
+            $('#TreatedByPhysician').val(2);
+        });
+
+
+        const ipFormInput = document.getElementById('IpAddress');
+        fetch('https://api.ipify.org?format=json')
+            .then((response) => { return response.json() })
+            .then((json) => {
+                const ip = json.ip;
+                ipFormInput.value = ip;
+            })
+            .catch((err) => { console.error(`Error getting IP Address: ${err}`) })
+
+
+    </script>
+
+}

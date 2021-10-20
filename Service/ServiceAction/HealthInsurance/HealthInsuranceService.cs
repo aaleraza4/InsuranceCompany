@@ -68,6 +68,7 @@ namespace Service.ServiceAction.HealthInsurance
             HealthModel.Weight = model.Weight;
             HealthModel.Height = model.Height;
             HealthModel.GenderId = model.GenderId;
+            HealthModel.IPAddress = model.IpAddress;
             HealthModel.IsDeleted = false;
             await Add(HealthModel);
             return HealthModel.Id;

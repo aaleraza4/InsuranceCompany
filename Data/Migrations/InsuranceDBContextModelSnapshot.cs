@@ -68,6 +68,9 @@ namespace Data.Migrations
                     b.Property<int>("HouseholdIncome")
                         .HasColumnType("int");
 
+                    b.Property<string>("IPAddress")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool?>("InstructionCheck")
                         .HasColumnType("bit");
 

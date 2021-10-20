@@ -32,6 +32,12 @@ namespace Data.Migrations
                 nullable: false,
                 defaultValue: 0);
 
+            migrationBuilder.AddColumn<string>(
+                name: "IPAddress",
+                table: "HealthInsurances",
+                type: "nvarchar(max)",
+                nullable: true);
+
             migrationBuilder.AddColumn<bool>(
                 name: "InstructionCheck",
                 table: "HealthInsurances",
@@ -83,6 +89,10 @@ namespace Data.Migrations
             migrationBuilder.DropColumn(
                 name: "UserId",
                 table: "MedicalInsurances");
+
+            migrationBuilder.DropColumn(
+                name: "IPAddress",
+                table: "HealthInsurances");
 
             migrationBuilder.DropColumn(
                 name: "InstructionCheck",

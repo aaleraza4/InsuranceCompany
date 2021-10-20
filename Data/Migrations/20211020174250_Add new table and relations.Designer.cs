@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(InsuranceDBContext))]
-    [Migration("20211020171902_Add new table and relations")]
+    [Migration("20211020174250_Add new table and relations")]
     partial class Addnewtableandrelations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,9 @@ namespace Data.Migrations
 
                     b.Property<int>("HouseholdIncome")
                         .HasColumnType("int");
+
+                    b.Property<string>("IPAddress")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("InstructionCheck")
                         .HasColumnType("bit");

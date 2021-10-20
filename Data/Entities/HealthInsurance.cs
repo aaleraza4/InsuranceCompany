@@ -26,6 +26,8 @@ namespace Data.Entities
         public bool? InstructionCheck { get; set; }
         [ForeignKey("Gender")]
         public int GenderId { get; set; }
+        public string IPAddress { get; set; }
+
         public virtual Gender Gender { get; set; }
     }
 }
