@@ -19,6 +19,7 @@ namespace Data
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<HealthInsurance> HealthInsurances { get; set; }
         public virtual DbSet<MedicalInsurance> MedicalInsurances { get; set; }
+        public virtual DbSet<LifeInsurance>  LifeInsurances { get; set; }
 
 
         /// <summary>

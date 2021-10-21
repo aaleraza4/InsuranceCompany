@@ -4,14 +4,16 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(InsuranceDBContext))]
-    partial class InsuranceDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211021182933_LifeInsurance")]
+    partial class LifeInsurance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,9 +87,6 @@ namespace Data.Migrations
 
                     b.Property<bool?>("IsStudent")
                         .HasColumnType("bit");
-
-                    b.Property<string>("LeadID")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumberOfPeopleLiving")
                         .HasColumnType("int");
@@ -298,8 +297,8 @@ namespace Data.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LeadID")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("LeadID")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

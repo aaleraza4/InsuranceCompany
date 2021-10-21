@@ -29,5 +29,11 @@ namespace Common.InsuranceNotification
             this.Clients.All.SendAsync("MedicalInsurance", "Your notification message");
 
         }
+        public void LifeInsurance()
+        {
+
+            this.Clients.All.SendAsync("LifeInsurance", "Your notification message");
+
+        }
     }
 }

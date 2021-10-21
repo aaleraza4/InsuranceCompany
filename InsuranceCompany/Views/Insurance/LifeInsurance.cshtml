@@ -1,17 +1,26 @@
-﻿ <!-- Health insurance form -->
+﻿@model DTO.LifeInsuranceDTO.LifeInsuranceDTO;
+
+
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<!-- Health insurance form -->
 <div class="hi_form">
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8">
-                <form action="">
+                <form method="POST" action="@Url.Action("LifeInsurance","Insurance")">
                     <div class="row">
+                        <input type="hidden" asp-for="GenderId" value="1" />
 
                         <!--  -->
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="fname" class="form-control" required>
+                                    <input type="text" id="fname" class="form-control" asp-for="FirstName">
                                     <label class="form-control-placeholder" for="fname">First name </label>
+                                    <span asp-validation-for="FirstName" class="text-danger dash-error-txt"></span>
                                 </div>
                             </div>
                         </div>
@@ -20,8 +29,18 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="lname" class="form-control" required>
+                                    <input type="text" id="lname" class="form-control" asp-for="LastName">
                                     <label class="form-control-placeholder" for="lname">Last name</label>
+                                    <span asp-validation-for="LastName" class="text-danger dash-error-txt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <div class="form-group">
+                                    <input type="email" id="email" class="form-control" asp-for="Email">
+                                    <label class="form-control-placeholder" for="email">Email</label>
+                                    <span asp-validation-for="Email" class="text-danger dash-error-txt"></span>
                                 </div>
                             </div>
                         </div>
@@ -30,10 +49,11 @@
                             <div class="gender">
                                 <label class="label_gender">Gender</label>
                                 <div class="gender_option">
-                                    <label class="Lbtn btn1 active" role="button">
-                                        <input class="check" type="radio" value="Male" name="Gender" checked="checked"> Male
+                                    <label class="Lbtn Genderbtn1 active" role="button">
+                                        <input class="check" type="radio" value="Male" name="Gender"
+                                               checked="checked"> Male
                                     </label>
-                                    <label class="Lbtn btn1" role="button">
+                                    <label class="Lbtn Genderbtn2" role="button">
                                         <input class="check" type="radio" value="Female" name="Gender"> Female
                                     </label>
                                 </div>
@@ -44,16 +64,18 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="tel" id="phone" class="form-control" required>
+                                    <input type="tel" id="phone" class="form-control" asp-for="HomePhoneNumber">
                                     <label class="form-control-placeholder" for="phone">Phone Number</label>
+                                    <span asp-validation-for="HomePhoneNumber" class="text-danger dash-error-txt"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="text" id="address" class="form-control" required>
+                                    <input type="text" id="address" class="form-control" asp-for="Address">
                                     <label class="form-control-placeholder" for="address">Street Address</label>
+                                    <span asp-validation-for="Address" class="text-danger dash-error-txt"></span>
                                 </div>
                             </div>
                         </div>
@@ -61,19 +83,23 @@
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group">
                                 <div class="form-group">
-                                    <input type="number" id="zip" class="form-control" required>
+                                    <input type="number" id="zip" class="form-control" asp-for="ZipCode">
                                     <label class="form-control-placeholder" for="zip">Zip Code</label>
+                                    <span asp-validation-for="ZipCode" class="text-danger dash-error-txt"></span>
                                 </div>
                             </div>
                         </div>
                         <!--  -->
                     </div>
                     <div class="row mt-5">
-                        <div class="col-6">
-                            <button data-next-id="slide2" validationdiv="slide1" id="shortHealthSlideOne" class="btn btn-primary form-btn back" type="button"><span>Back</span></button>
+                        <div class="col-6 ">
                         </div>
                         <div class="col-6 ">
-                            <button data-next-id="slide2" validationdiv="slide1" id="shortHealthSlideOne" class="btn btn-primary form-btn continue" type="button"><span>Continue</span></button>
+                            <button data-next-id="slide2" validationdiv="slide1" id="shortHealthSlideOne"
+                                    class="btn btn-primary form-btn continue"
+                                    type="submit">
+                                <span>Submit</span>
+                            </button>
                         </div>
                     </div>
                     <div class="row">
@@ -114,3 +140,22 @@
         </div>
     </div>
 </div>
+<script>
+        $(".Genderbtn1").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".Genderbtn2").removeClass("active");
+            $(this).addClass("active");
+            $('#GenderId').val(1);
+        });
+        $(".Genderbtn2").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+
+            $(".Genderbtn1").removeClass("active");
+            $(this).addClass("active");
+            $('#GenderId').val(2);
+        });
+</script>

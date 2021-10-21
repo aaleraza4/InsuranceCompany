@@ -1,10 +1,12 @@
 ﻿using Common.Helper;
 using DTO.HealthInsuranceDTO;
+using DTO.LifeInsuranceDTO;
 using DTO.MedicareDTO;
 using ENUM.Education;
 using ENUM.Occupation;
 using Microsoft.AspNetCore.Mvc;
 using Service.ServiceAction.HealthInsurance;
+using Service.ServiceAction.LifeInsurance;
 using Service.ServiceAction.MedicareInsurance;
 using System;
 using System.Collections.Generic;
@@ -17,11 +19,13 @@ namespace InsuranceCompany.Controllers
     {
         private readonly IHealthInsuranceService _healthInsuranceService;
         private readonly IMedicareInsuranceService _medicareInsuranceService;
+        private readonly ILifeInsuranceService _lifeInsuranceService;
 
-        public InsuranceController(IMedicareInsuranceService MedicareInsuranceService,IHealthInsuranceService healthInsuranceService)
+        public InsuranceController(IMedicareInsuranceService MedicareInsuranceService,IHealthInsuranceService healthInsuranceService, ILifeInsuranceService lifeInsuranceService)
         {
             _healthInsuranceService = healthInsuranceService;
             _medicareInsuranceService = MedicareInsuranceService;
+            _lifeInsuranceService = lifeInsuranceService;
         }
         public IActionResult Index()
         {
@@ -35,6 +39,16 @@ namespace InsuranceCompany.Controllers
         public IActionResult LifeInsurance()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> LifeInsurance(LifeInsuranceDTO lifeInsuranceDTO )
+        {
+            long Id = 0;
+            if (lifeInsuranceDTO != null)
+            {
+                Id = await _lifeInsuranceService.SaveUpdateLifeInsurance(lifeInsuranceDTO);
+            }
+            return RedirectToAction("SuccessPage", "Insurance", new { Id = Id });
         }
         public IActionResult FinalExpense()
         {
