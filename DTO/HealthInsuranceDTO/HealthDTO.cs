@@ -22,13 +22,11 @@ namespace DTO.HealthInsuranceDTO
         
         [Display(Name = "HouseHold Income")]
         [Required(ErrorMessage = "This field is required.")]
-        //[MinLength(2, ErrorMessage = "Value must be greater than 2.")]
         [Range(1000, 100000000000000, ErrorMessage = "Range is between 1000 to 100000000000000.")]
         public int HouseholdIncome { get; set; }
 
         [Display(Name = "Number of People Living")]
         [Required(ErrorMessage = "This field is required.")]
-        //[MinLength(2, ErrorMessage = "Value must be greater than 2.")]
         [Range(1,10, ErrorMessage = "Range is between 1 to 10.")]
         public int NumberOfPeopleLiving { get; set; }
 
@@ -36,8 +34,6 @@ namespace DTO.HealthInsuranceDTO
         [Range(1, 10, ErrorMessage = "Range is between 1 to 10.")]
         public string Weight { get; set; }
         [Required(ErrorMessage = "This field is required.")]
-        [Range(1, 10, ErrorMessage = "Range is between 1 to 10.")]
-
         public string Height { get; set; }
 
         [Required(ErrorMessage = "Please select One Option.")]
