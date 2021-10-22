@@ -1,0 +1,126 @@
+﻿@model DTO.LoginDTO;
+@{ 
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Insurance - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .bg-login-image {
+            background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fsecurityintelligence.com%2Fwhy-you-need-advanced-authentication-to-protect-identities-without-compromising-user-experience%2F&psig=AOvVaw1s7DjTTefTwd9sqJbqaCHy&ust=1634928007695000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKDs0syT3PMCFQAAAAAdAAAAABAD) !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-8 col-lg-8 col-md-6">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0 ">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                    </div>
+                                    <form id="LoginForm">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                   id="exampleInputEmail" asp-for="Email" aria-describedby="emailHelp"
+                                                   placeholder="Enter Email Address">
+                                            <span asp-validation-for="Email" class="text-danger dash-error-txt"></span>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="password" asp-for="Password" class="form-control form-control-user"
+                                                   id="exampleInputPassword" placeholder="Password">
+                                            <span asp-validation-for="Password" class="text-danger dash-error-txt"></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/js/sb-admin-2.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!--Toaster Message-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        $('#LoginForm').on('submit', function (event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+            if (!$('#LoginForm').valid()) {
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Account/Login",
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    if (data.Success == false) {
+                        toastr.warning("Invalid Login Attempt");
+                    }
+                    else {
+                        window.location.replace(window.location.origin + '/superadmin/Medicarelisting/');
+                    }
+                },
+            });
+        });
+    </script>
+</body>
+
+</html>

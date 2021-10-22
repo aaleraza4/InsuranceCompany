@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Service.ServiceAction.HealthInsurance;
+using Service.ServiceAction.LifeInsurance;
 using Service.ServiceAction.MedicareInsurance;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace InsuranceCompany.Controllers
         private readonly IHealthInsuranceService _healthInsuranceService;
         private readonly IMedicareInsuranceService _medicalInsuranceService;
         private readonly InsuranceDBContext _insuranceDBContext;
+        private readonly ILifeInsuranceService _lifeInsuranceService;
         private readonly IConfiguration _configuration;
         private static string conn = string.Empty;
         private readonly IHubContext<NotificationHub> _hubContext;
@@ -29,13 +31,14 @@ namespace InsuranceCompany.Controllers
         public static int Lifecounter = 0;
 
         NotificationHub NotificationHub = new NotificationHub();
-        public SuperAdminController(IMedicareInsuranceService medicalInsuranceService,IHealthInsuranceService healthInsuranceService, InsuranceDBContext insuranceDBContext, IConfiguration configuration, IHubContext<NotificationHub> hubContext)
+        public SuperAdminController(ILifeInsuranceService lifeInsuranceService,IMedicareInsuranceService medicalInsuranceService,IHealthInsuranceService healthInsuranceService, InsuranceDBContext insuranceDBContext, IConfiguration configuration, IHubContext<NotificationHub> hubContext)
         {
             _healthInsuranceService = healthInsuranceService;
             _insuranceDBContext = insuranceDBContext;
             _configuration = configuration;
             _hubContext = hubContext;
             _medicalInsuranceService = medicalInsuranceService;
+            _lifeInsuranceService = lifeInsuranceService;
         }
         public IActionResult Index()
         {
@@ -96,6 +99,19 @@ namespace InsuranceCompany.Controllers
 
             return View(_medicalInsuranceService.GetMedicareInsurances());
         }
+
+        public IActionResult FinalExpenseListing()
+        {
+            var model = _healthInsuranceService.GetHealthInsurances();
+            return View(model);
+        }
+        public IActionResult LifeInsuranceListing()
+        {
+
+            return View(_lifeInsuranceService.GetLifeInsurances());
+        }
+
+
         public IEnumerable<MedicalInsurance> GetAllMessagesforMedicalInsurance()
         {
             conn = _configuration.GetConnectionString("db_string");

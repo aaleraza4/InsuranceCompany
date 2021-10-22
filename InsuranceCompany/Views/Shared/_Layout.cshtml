@@ -1,16 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Insurance</title>
+    <title>Home</title>
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/slick-theme.css">
     <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
     <link rel="stylesheet" href="~/css/animate.min.css">
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -51,7 +55,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a asp-controller="Insurance" asp-action="MedicareInsurance">Medical Insurance</a>
+                            <a asp-controller="Insurance" asp-action="MedicareInsurance">Medicare Insurance</a>
                         </li>
                         <li>
                             <a asp-controller="Insurance" asp-action="HealthInsurance">Health Insurance</a>
@@ -62,24 +66,247 @@
                         <li>
                             <a asp-controller="Insurance" asp-action="FinalExpense">Final Expense</a>
                         </li>
+                        <li>
+                            <a asp-controller="Account" asp-action="login">Login</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
     <!-- Header end -->
-    <div class="hi_form">
-        @RenderBody()
-    </div>
-
-    <footer class="border-top footer text-muted">
+    <!-- fixed header -->
+    <div class="fixed_header">
         <div class="container">
-            &copy; 2021 - InsuranceCompany - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="fh_inner">
+                <div class="fh_logo">
+                    <a href="#">
+                        <img src="https://findqualityinsurance.com/wp-content/uploads/2017/07/fqi-logo.png" alt="">
+                    </a>
+                </div>
+                <div class="fh_nave">
+                    <ul>
+                        <li>
+                            <a href="Medical-Insurance.html">Medical Insurance</a>
+                        </li>
+                        <li>
+                            <a href="Health-Insurance.html">Health Insurance</a>
+                        </li>
+                        <li>
+                            <a href="Life-Insurance.html">Life Insurance</a>
+                        </li>
+                        <li>
+                            <a href="Final-Expense.html">Final Expense</a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="mobile_menu"><i class="fas fa-bars"></i></span>
+            </div>
         </div>
+    </div>
+    <!-- fixed header end -->
+    @RenderBody();
+    <!-- footer -->
+    <footer class="footercontainer">
+        <div class="article-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Recent Articles</h3>
+                        <div class="clearfix"></div>
+                        <div class="fmedicare">
+                            <h4>Medicare Insurance </h4>
+                            <ul>
+                                <li><a href="#">WHAT’S THE DIFFERENCE BETWEEN PART A, B, C, AND D?</a></li>
+                                <li><a href="#">MEDICARE, SUPPLEMENT, OR ADVANTAGE?</a></li>
+                                <li><a href="#">MEDICARE OPEN ENROLLMENT 2019</a></li>
+                            </ul>
+                        </div>
+                        <div class="fhealth">
+                            <h4>Health Insurance </h4>
+                            <ul>
+                                <li><a href="#">What You Need to Know About Open Enrollment</a></li>
+                                <li><a href="#">Health Insurance &amp; COVID-19 - What is Covered?</a></li>
+                                <li><a href="#">TIPS TO SAVE ON HEALTH INSURANCE</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="flife">
+                            <h4>Life Insurance </h4>
+                            <ul>
+                                <li><a href="#">What is The Best Life Insurance For Me?</a></li>
+                                <li><a href="#">Tips to Save You Money on Life Insurance</a></li>
+                                <li><a href="#">LIFE INSURANCE VS. FINAL EXPENSE</a></li>
+                            </ul>
+                        </div>
+                        <div class="fhome">
+                            <h4>Final Expense</h4>
+                            <ul>
+                                <li><a href="#">What is Covered Under My Home Insurance?</a></li>
+                                <li><a href="#">Investing in Home Insurance &amp; Peace of Mind</a></li>
+                                <li><a href="#">5 Things Not To Keep In Your Garage</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="divider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="first-footer">
+            <div class="container">
+                <div class="row">
+                    <div id="text-11"
+                         class="widget-odd widget-first widget-1 copyright-text col-lg-6 col-md-6 col-sm-12 col-xs-12 col-nr-3 widget_text">
+                        <div class="inner-widget-wrap">
+                            <div class="textwidget">
+                                <p>
+                                    Copyright © 2020 <strong>FindQualityInsurance.com</strong>. All rights reserved. | <a href="/privacy-policy">Privacy Policy</a> | <a href="/about-us">About Us</a> |
+                                    <a href="/contact-us">Contact Us</a><br> Find Quality
+                                    Insurance, LLC, 201 Milwaukee St #200, Denver, CO 80206
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="nav_menu-3"
+                         class="widget-even widget-last widget-2 footer-menu col-lg-6 col-md-6 col-sm-12 col-xs-12 col-nr-3 widget_nav_menu">
+                        <div class="inner-widget-wrap">
+                            <div class="menu-top-menu-container">
+                                <ul id="menu-top-menu" class="menu">
+                                    <li id="menu-item-876"
+                                        class="healthlink menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-parent-item menu-item-876">
+                                        <a href="#" data-ps2id-api="true">Health Insurance</a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-486"
+                                                class="getquote menu-item menu-item-type-custom menu-item-object-custom menu-item-486">
+                                                <a href="/health-insurance" data-ps2id-api="true">Get a quote</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-176"
+                                        class="autolink menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-parent-item menu-item-176">
+                                        <a href="#" data-ps2id-api="true">Auto Insurance</a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-487"
+                                                class="getquote menu-item menu-item-type-custom menu-item-object-custom menu-item-487">
+                                                <a href="/auto-insurance" data-ps2id-api="true">Get a quote</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-170"
+                                        class="lifelink menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-parent-item menu-item-170">
+                                        <a href="#" data-ps2id-api="true">Life Insurance</a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-488"
+                                                class="getquote menu-item menu-item-type-custom menu-item-object-custom menu-item-488">
+                                                <a href="/life-insurance" data-ps2id-api="true">Get a quote</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-171"
+                                        class="homelink menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-parent-item menu-item-171">
+                                        <a href="#" data-ps2id-api="true">Home Insurance</a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-489"
+                                                class="getquote menu-item menu-item-type-custom menu-item-object-custom menu-item-489">
+                                                <a href="/home-insurance" data-ps2id-api="true">Get a quote</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-879"
+                                        class="medicarelink menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-parent-item menu-item-879">
+                                        <a href="#" data-ps2id-api="true">Medicare Insurance</a>
+                                        <ul class="sub-menu">
+                                            <li id="menu-item-490"
+                                                class="getquote menu-item menu-item-type-custom menu-item-object-custom menu-item-490">
+                                                <a href="/medicare-insurance" data-ps2id-api="true">Get a quote</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-853"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-845 current_page_item menu-item-853">
+                                        <a href="#" aria-current="page" data-ps2id-api="true">Final Expense</a>
+                                    </li>
+                                    <li id="menu-item-485"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-485">
+                                        <a href="#" data-ps2id-api="true">Helpful Articles</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.lightwrapper -->
+
+        <div class="second-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="divider"></div>
+                    <div id="themegrill_social_icons-3"
+                         class="widget-odd widget-first widget-1 social-icons-footer col-lg-12 col-md-12 col-sm-12 col-xs-12 social-icons widget_social_icons">
+                        <ul class="social-icons-lists social-icons-greyscale icons-background-square">
+
+
+                            <li class="social-icons-list-item">
+                                <a href="#" target="_blank" class="social-icon">
+                                    <span class="socicon socicon-facebook"
+                                          style="padding: 10px; font-size: 16px; background-color: #555">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </span>
+
+                                </a>
+                            </li>
+
+
+                            <li class="social-icons-list-item">
+                                <a href="#" target="_blank" class="social-icon">
+                                    <span class="socicon socicon-twitter"
+                                          style="padding: 10px; font-size: 16px; background-color: #555">
+                                        <i class="fab fa-twitter"></i>
+                                    </span>
+
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <div id="media_image-2"
+                         class="widget-even widget-last widget-2 footer-logo col-lg-12 col-md-12 col-sm-12 col-xs-12 widget_media_image">
+                        <img width="132" height="38"
+                             src="https://findqualityinsurance.com/wp-content/uploads/2017/07/footer-logo.png"
+                             class="image wp-image-139  attachment-full size-full" alt=""
+                             style="max-width: 100%; height: auto;" data-attachment-id="139" data-permalink="#"
+                             data-orig-file="https://findqualityinsurance.com/wp-content/uploads/2017/07/footer-logo.png"
+                             data-orig-size="132,38" data-comments-opened="1"
+                             data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}"
+                             data-image-title="footer-logo" data-image-description=""
+                             data-medium-file="https://findqualityinsurance.com/wp-content/uploads/2017/07/footer-logo.png"
+                             data-large-file="https://findqualityinsurance.com/wp-content/uploads/2017/07/footer-logo.png"
+                             pagespeed_url_hash="3610164541"
+                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.subfooter -->
+
     </footer>
+
+    <!-- Footer End-->
+
     <script src="~/js/jquery-3.4.1.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/slick.min.js"></script>
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/js/custom.js"></script>
 
     <!--Toaster Message-->
 
@@ -91,5 +318,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
+
 </html>

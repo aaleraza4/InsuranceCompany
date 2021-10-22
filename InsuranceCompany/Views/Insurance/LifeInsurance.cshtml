@@ -5,6 +5,35 @@
     Layout = "~/Views/Shared/_layout.cshtml";
 }
 
+<!-- life banner -->
+<div class="cg-section">
+    <div class="wpb_row vc_row-fluid banner-img vc_custom_1502448255978" style="background-image: url('../img/health-insurance-slide6.jpg')">
+        <div class="container">
+            <div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-xs">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div class="vc_row wpb_row vc_inner vc_row-fluid inner-banner-txt home-insurance-banner vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <div class="icons life-icon icon-family-care"></div>
+                                                <h2>Life Insurance</h2>
+                                                <h3>Plan for tomorrow, TODAY with Life Insurance!</h3>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Health insurance form -->
 <div class="hi_form">
     <div class="container">
@@ -13,6 +42,9 @@
                 <form method="POST" action="@Url.Action("LifeInsurance","Insurance")">
                     <div class="row">
                         <input type="hidden" asp-for="GenderId" value="1" />
+                        <input type="hidden" asp-for="IpAddress" />
+                        <input type="hidden" asp-for="LeadID" />
+                        <input id="leadid_token" name="universal_leadid" type="hidden" value="" />
 
                         <!--  -->
                         <div class="col-12 col-md-6">
@@ -113,6 +145,20 @@
                         </div>
                     </div>
                 </form>
+                <script id="LeadiDscript" type="text/javascript">
+                    (function () {
+                        var s = document.createElement('script');
+                        s.id = 'LeadiDscript_campaign';
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = '//create.lidstatic.com/campaign/7e697d33-5cc2-858a-aa67-cc5774491ddb.js?snippet_version=2';
+                        var LeadiDscript = document.getElementById('LeadiDscript');
+                        LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+                    })();
+                </script>
+                <noscript>
+                    <img src='//create.leadid.com/noscript.gif?lac=3b9bdcb5-5bdd-309b-4a40-2eeae851dbb5&lck=7e697d33-5cc2-858a-aa67-cc5774491ddb&snippet_version=2' />
+                </noscript>
             </div>
             <!--  -->
             <div class="col-12 col-md-4">
@@ -141,21 +187,34 @@
     </div>
 </div>
 <script>
-        $(".Genderbtn1").click(function () {
-            if ($(this).hasClass('active')) {
-                $("[name=Gender]").attr('checked', true);
-            }
-            $(".Genderbtn2").removeClass("active");
-            $(this).addClass("active");
-            $('#GenderId').val(1);
-        });
-        $(".Genderbtn2").click(function () {
-            if ($(this).hasClass('active')) {
-                $("[name=Gender]").attr('checked', true);
-            }
+    $(".Genderbtn1").click(function () {
+        if ($(this).hasClass('active')) {
+            $("[name=Gender]").attr('checked', true);
+        }
+        $(".Genderbtn2").removeClass("active");
+        $(this).addClass("active");
+        $('#GenderId').val(1);
+    });
+    $(".Genderbtn2").click(function () {
+        if ($(this).hasClass('active')) {
+            $("[name=Gender]").attr('checked', true);
+        }
 
-            $(".Genderbtn1").removeClass("active");
-            $(this).addClass("active");
-            $('#GenderId').val(2);
-        });
+        $(".Genderbtn1").removeClass("active");
+        $(this).addClass("active");
+        $('#GenderId').val(2);
+    });
+    const ipFormInput = document.getElementById('IpAddress');
+    fetch('https://api.ipify.org?format=json')
+        .then((response) => { return response.json() })
+        .then((json) => {
+            const ip = json.ip;
+            ipFormInput.value = ip;
+        })
+        .catch((err) => { console.error(`Error getting IP Address: ${err}`) })
+
+    $('#shortHealthSlideOne').click(function () {
+        let Id = $('#leadid_token').val()
+        $('#LeadID').val(Id);
+    });
 </script>

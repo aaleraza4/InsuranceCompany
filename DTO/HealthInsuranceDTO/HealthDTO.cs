@@ -33,8 +33,11 @@ namespace DTO.HealthInsuranceDTO
         public int NumberOfPeopleLiving { get; set; }
 
         [Required(ErrorMessage = "This field is required.")]
+        [Range(1, 10, ErrorMessage = "Range is between 1 to 10.")]
         public string Weight { get; set; }
         [Required(ErrorMessage = "This field is required.")]
+        [Range(1, 10, ErrorMessage = "Range is between 1 to 10.")]
+
         public string Height { get; set; }
 
         [Required(ErrorMessage = "Please select One Option.")]
@@ -45,7 +48,7 @@ namespace DTO.HealthInsuranceDTO
         public bool InstructionCheck { get; set; }
 
         public string IpAddress { get; set; }
-        public string LeadId { get; set; }
+        public string LeadID { get; set; }
 
         public int GenderId { get; set; }
         public IEnumerable<SelectListItem> EducationList { get; set; }

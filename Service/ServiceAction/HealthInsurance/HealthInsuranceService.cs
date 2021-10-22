@@ -46,7 +46,7 @@ namespace Service.ServiceAction.HealthInsurance
                 TreatedByPhysician = x.TreatedByPhysician == true ?1:0,
                 Weight = x.Weight,
                 IpAddress = x.IPAddress,
-                LeadId = x.LeadID
+                LeadID = x.LeadID
             }).ToList();
         }
 
@@ -71,6 +71,7 @@ namespace Service.ServiceAction.HealthInsurance
             HealthModel.Height = model.Height;
             HealthModel.GenderId = model.GenderId;
             HealthModel.IPAddress = model.IpAddress;
+            HealthModel.LeadID = model.LeadID;
             HealthModel.IsDeleted = false;
             await Add(HealthModel);
             return HealthModel.Id;

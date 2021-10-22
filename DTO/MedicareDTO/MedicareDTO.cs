@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,14 +22,13 @@ namespace DTO.MedicareDTO
         public string City { get; set; }
         [EmailAddress]
         [Required(ErrorMessage = "This field is required.")]
+        [Remote(action: "CheckEmailExists", controller: "Account", ErrorMessage = "Email Address already exists", AdditionalFields = "UserId")]
         public string Email { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "Please enter only digits.")]
-        [Range(0, 1000000000, ErrorMessage = "Range is between 0 to 10000000000.")]
         public int? ZipCode { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "Please enter only digits.")]
-        [Range(0, 1000000000, ErrorMessage = "Range is between 0 to 10000000000.")]
         public string HomePhoneNumber { get; set; }
         [Required(ErrorMessage = "This field is required.")]
         public string IPAddress { get; set; }

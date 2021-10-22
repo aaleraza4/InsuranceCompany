@@ -46,6 +46,7 @@ namespace Service.ServiceAction.LifeInsurance
                 HomePhoneNumber = x.User.HomePhoneNumber,
                 ZipCode = x.User.ZipCode,
                 UserId = x.User.Id,
+                LeadID = x.User.LeadID
             }).ToList();
             return model;
         }
@@ -78,6 +79,7 @@ namespace Service.ServiceAction.LifeInsurance
             user.LastName = model.LastName;
             user.HomePhoneNumber = model.HomePhoneNumber;
             user.ZipCode = model.ZipCode;
+            user.LeadID = model.LeadID;
             var result = await userManager.CreateAsync(user, "Admin#123");
             if (result.Succeeded)
                 return user.Id;

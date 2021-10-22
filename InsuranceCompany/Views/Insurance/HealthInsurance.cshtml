@@ -1,202 +1,31 @@
 ﻿@model DTO.HealthInsuranceDTO.HealthDTO;
 
 
-@{ 
+@{
     Layout = "~/Views/Shared/_layout.cshtml";
 }
-<!-- Health insurance form -->
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-md-8">
-            <form method="post" action="@Url.Action("HealthInsurance","Insurance")">
-                <input type="hidden" asp-for="GenderId" value="1" />
-                <input type="hidden" asp-for="PreExistingOrSmoker" value="1" />
-                <input type="hidden" asp-for="TreatedByPhysician" value="1" />
-                <input type="hidden" asp-for="IpAddress" value="1" />
 
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class="gender">
-                            <label class="label_gender">Gender</label>
-                            <div class="gender_option">
-                                <label class="Lbtn Genderbtn1 active" role="button">
-                                    <input class="check" type="radio" value="Male" name="Gender"
-                                           checked="checked"> Male
-                                </label>
-                                <label class="Lbtn Genderbtn2" role="button">
-                                    <input class="check" type="radio" value="Female" name="Gender"> Female
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-12 col-md-6">
-                        <div class="form_groups input-group mb-1">
-                            <div class="form-group">
-                                <select class="form-control" asp-for="IsStudent">
-                                    <option value="">Are you a student?</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                                <span asp-validation-for="IsStudent" class="text-danger dash-error-txt"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-
-                    <div class="col-12 col-md-6">
-                        <div class="form_groups input-group mb-1">
-                            <label class="form-control-placeholder" asp-for="Occupation">Occupation</label>
-                            <div class="form-group">
-                                <select class="form-control" asp-for="Occupation" asp-items="Model.OccupationList">
-                                    <option value="">Select Occupation</option>
-                                </select>
-                                <span asp-validation-for="Occupation" class="text-danger dash-error-txt"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-12 col-md-6">
-                        <div class="form_groups input-group mb-1">
-                            <div class="form-group">
-                                <input type="text" id="Income" class="form-control" asp-for="HouseholdIncome">
-                                <label class="form-control-placeholder" asp-for="HouseholdIncome"></label>
-                                <span asp-validation-for="HouseholdIncome" class="text-danger dash-error-txt"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-12 col-md-6">
-                        <div class="form_groups input-group mb-1">
-                            <div class="form-group">
-                                <select class="form-control" asp-for="IsMarried">
-                                    <option value="">Are you a Married?</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                                <span asp-validation-for="IsMarried" class="text-danger dash-error-txt"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-12 col-md-6">
-                        <div class="form_groups input-group mb-1">
-                            <label class="form-control-placeholder" asp-for="Education">Education</label>
-                            <div class="form-group">
-                                <select class="form-control" asp-for="Education" asp-items="Model.EducationList">
-                                    <option value="">Select Education</option>
-                                </select>
-                                <span asp-validation-for="Education" class="text-danger dash-error-txt"></span>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-12 col-md-6">
-                        <div class="form_groups input-group mb-1">
-                            <div class="form-group">
-                                <input type="text" id="Income" class="form-control" asp-for="NumberOfPeopleLiving">
-                                <label class="form-control-placeholder" asp-for="NumberOfPeopleLiving"></label>
-                                <span asp-validation-for="NumberOfPeopleLiving" class="text-danger dash-error-txt"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-12 col-md-6">
-                        <div class="form_groups input-group mb-1">
-                            <div class="form-group">
-                                <input type="text" id="height" class="form-control" asp-for="Height">
-                                <label class="form-control-placeholder" for="height">Height</label>
-                                <span asp-validation-for="Education" class="text-danger dash-error-txt"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-12 col-md-6">
-                        <div class="form_groups input-group mb-1">
-                            <div class="form-group">
-                                <input type="text" id="weight" class="form-control" asp-for="Weight">
-                                <label class="form-control-placeholder" for="weight">Weight</label>
-                                <span asp-validation-for="Education" class="text-danger dash-error-txt"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-                    <div class="col-12 col-md-6">
-                        <div class="gender">
-                            <label class="label_gender">
-                                Treated By physician
-                            </label>
-                            <div class="gender_option">
-                                <label class="Lbtn Treated1 active" role="button">
-                                    <input class="check" type="radio" value="Yes" name="condition"
-                                           checked="checked"> Yes
-                                </label>
-                                <label class="Lbtn Treated2" role="button">
-                                    <input class="check" type="radio" value="No" name="condition"> No
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  -->
-
-                    <div class="col-12 col-md-6">
-                        <div class="gender">
-                            <label class="label_gender">
-                                Do you have pre-existing conditions or are you a
-                                smoker
-                            </label>
-                            <div class="gender_option">
-                                <label class="Lbtn PreExisting1 active" role="button">
-                                    <input class="check" type="radio" value="Yes" name="condition"
-                                           checked="checked"> Yes
-                                </label>
-                                <label class="Lbtn PreExisting2" role="button">
-                                    <input class="check" type="radio" value="No" name="condition"> No
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col">
-                        <div class="checkbox checkbox-success">
-                            <input id="leadid_tcpa_disclosure" type="checkbox" checked asp-for="InstructionCheck">
-                            <label for="leadid_tcpa_disclosure">
-                                <strong>By clicking Submit, you agree to our <a href="/privacy-policy" target="_blank">Privacy Policy</a></strong>.<br>You further provide your express consent by electronic signature to be contacted by Trusted Consumer and our <a href="javascript:void(0);" data-toggle="modal" data-target="#providers" id="show_providers">providers</a> agents via: automated telephone dialing systems, artificial or prerecorded voices, by email, SMS text message or live agent to the phone number provided. Your phone carrier's message and data rates may apply. I understand I can revoke this consent at any time and consent is not required as a condition of purchase.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-6"></div>
-                    <div class="col-6 ">
-                        <button class="btn btn-primary form-btn continue" type="submit">
-                            <span>Submit</span>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--  -->
-        <div class="col-12 col-md-4">
-            <div class="insurance-type wpb_column vc_column_container vc_col-sm-4">
+<!-- health banner -->
+<div class="cg-section">
+    <div class="wpb_row vc_row-fluid banner-img vc_custom_1502447920588" style="background-image: url('../img/health-insurance-slide6.jpg')">
+        <div class="container">
+            <div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-xs">
                 <div class="vc_column-inner ">
                     <div class="wpb_wrapper">
-                        <div class="wpb_text_column wpb_content_element ">
-                            <div class="wpb_wrapper">
-                                <div class="helpline-TN">
-                                    <div class="fa fa-phone"></div>
-                                    <div class="helpline">
-                                        <p>Want to speak to someone now?</p>
-                                        <h3 class="LPScriptNumber">(833) 286-3623</h3>
+                        <div class="vc_row wpb_row vc_inner vc_row-fluid inner-banner-txt home-insurance-banner vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <div class="icons health-icon icon-health-care2"></div>
+                                                <h2>Health Insurance</h2>
+                                                <h3>Find the right health plan for your family</h3>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <h3>Looking for a better <strong>Health Insurance</strong> experience</h3>
-                                <p>
-                                    <strong>FindQualityInsurance.com</strong> can connect you with the leading
-                                    carriers. Fill out the form or call us to get started!
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -205,73 +34,297 @@
         </div>
     </div>
 </div>
+<!-- health banner end -->
+<!-- Health insurance form -->
 
-@section Scripts{ 
-  <script>
-      $(".Genderbtn1").click(function () {
+<div class="hi_form">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <form method="post" action="@Url.Action("HealthInsurance","Insurance")">
+                    <input type="hidden" asp-for="GenderId" value="1" />
+                    <input type="hidden" asp-for="PreExistingOrSmoker" value="1" />
+                    <input type="hidden" asp-for="TreatedByPhysician" value="1" />
+                    <input type="hidden" asp-for="IpAddress" value="1" />
+                    <input type="hidden" asp-for="LeadID" />
+                    <input id="leadid_token" name="universal_leadid" type="hidden" value="" />
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="gender">
+                                <label class="label_gender">Gender</label>
+                                <div class="gender_option">
+                                    <label class="Lbtn Genderbtn1 active" role="button">
+                                        <input class="check" type="radio" value="Male" name="Gender"
+                                               checked="checked"> Male
+                                    </label>
+                                    <label class="Lbtn Genderbtn2" role="button">
+                                        <input class="check" type="radio" value="Female" name="Gender"> Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <div class="form-group">
+                                    <select class="form-control" asp-for="IsStudent">
+                                        <option value="">Are you a student?</option>
+                                        <option value="1">Yes</option>
+                                        <option value="2">No</option>
+                                    </select>
+                                    <span asp-validation-for="IsStudent" class="text-danger dash-error-txt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <label class="form-control-placeholder" asp-for="Occupation">Occupation</label>
+                                <div class="form-group">
+                                    <select class="form-control" asp-for="Occupation" asp-items="Model.OccupationList">
+                                        <option value="">Select Occupation</option>
+                                    </select>
+                                    <span asp-validation-for="Occupation" class="text-danger dash-error-txt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <div class="form-group">
+                                    <input type="text" id="Income" class="form-control" asp-for="HouseholdIncome">
+                                    <label class="form-control-placeholder" asp-for="HouseholdIncome"></label>
+                                    <span asp-validation-for="HouseholdIncome" class="text-danger dash-error-txt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <div class="form-group">
+                                    <select class="form-control" asp-for="IsMarried">
+                                        <option value="">Are you a Married?</option>
+                                        <option value="1">Yes</option>
+                                        <option value="2">No</option>
+                                    </select>
+                                    <span asp-validation-for="IsMarried" class="text-danger dash-error-txt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <label class="form-control-placeholder" asp-for="Education">Education</label>
+                                <div class="form-group">
+                                    <select class="form-control" asp-for="Education" asp-items="Model.EducationList">
+                                        <option value="">Select Education</option>
+                                    </select>
+                                    <span asp-validation-for="Education" class="text-danger dash-error-txt"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <div class="form-group">
+                                    <input type="text" id="Income" class="form-control" asp-for="NumberOfPeopleLiving">
+                                    <label class="form-control-placeholder" asp-for="NumberOfPeopleLiving"></label>
+                                    <span asp-validation-for="NumberOfPeopleLiving" class="text-danger dash-error-txt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <div class="form-group">
+                                    <input type="text" id="height" class="form-control" placeholder="Please Enter Height in Ft" asp-for="Height">
+                                    <label class="form-control-placeholder" for="height">Height</label>
+                                    <span asp-validation-for="Height" class="text-danger dash-error-txt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="form_groups input-group mb-1">
+                                <div class="form-group">
+                                    <input type="text" id="weight" class="form-control" placeholder="Please Enter Weight in Kg" asp-for="Weight">
+                                    <label class="form-control-placeholder" for="weight">Weight</label>
+                                    <span asp-validation-for="Weight" class="text-danger dash-error-txt"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12 col-md-6">
+                            <div class="gender">
+                                <label class="label_gender">
+                                    Treated By physician
+                                </label>
+                                <div class="gender_option">
+                                    <label class="Lbtn Treated1 active" role="button">
+                                        <input class="check" type="radio" value="Yes" name="condition"
+                                               checked="checked"> Yes
+                                    </label>
+                                    <label class="Lbtn Treated2" role="button">
+                                        <input class="check" type="radio" value="No" name="condition"> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+
+                        <div class="col-12 col-md-6">
+                            <div class="gender">
+                                <label class="label_gender">
+                                    Do you have pre-existing conditions or are you a
+                                    smoker
+                                </label>
+                                <div class="gender_option">
+                                    <label class="Lbtn PreExisting1 active" role="button">
+                                        <input class="check" type="radio" value="Yes" name="condition"
+                                               checked="checked"> Yes
+                                    </label>
+                                    <label class="Lbtn PreExisting2" role="button">
+                                        <input class="check" type="radio" value="No" name="condition"> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col">
+                            <div class="checkbox checkbox-success">
+                                <input id="leadid_tcpa_disclosure" type="checkbox" checked asp-for="InstructionCheck">
+                                <label for="leadid_tcpa_disclosure">
+                                    <strong>By clicking Submit, you agree to our <a href="/privacy-policy" target="_blank">Privacy Policy</a></strong>.<br>You further provide your express consent by electronic signature to be contacted by Trusted Consumer and our <a href="javascript:void(0);" data-toggle="modal" data-target="#providers" id="show_providers">providers</a> agents via: automated telephone dialing systems, artificial or prerecorded voices, by email, SMS text message or live agent to the phone number provided. Your phone carrier's message and data rates may apply. I understand I can revoke this consent at any time and consent is not required as a condition of purchase.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-6"></div>
+                        <div class="col-6 ">
+                            <button class="btn btn-primary form-btn continue" id="shortHealthSlideOne" type="submit">
+                                <span>Submit</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <script id="LeadiDscript" type="text/javascript">
+                    (function () {
+                        var s = document.createElement('script');
+                        s.id = 'LeadiDscript_campaign';
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = '//create.lidstatic.com/campaign/7e697d33-5cc2-858a-aa67-cc5774491ddb.js?snippet_version=2';
+                        var LeadiDscript = document.getElementById('LeadiDscript');
+                        LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+                    })();
+                </script>
+                <noscript>
+                    <img src='//create.leadid.com/noscript.gif?lac=3b9bdcb5-5bdd-309b-4a40-2eeae851dbb5&lck=7e697d33-5cc2-858a-aa67-cc5774491ddb&snippet_version=2' />
+                </noscript>
+            </div>
+            <!--  -->
+            <div class="col-12 col-md-4">
+                <div class="insurance-type wpb_column vc_column_container vc_col-sm-4">
+                    <div class="vc_column-inner ">
+                        <div class="wpb_wrapper">
+                            <div class="wpb_text_column wpb_content_element ">
+                                <div class="wpb_wrapper">
+                                    <div class="helpline-TN">
+                                        <div class="fa fa-phone"></div>
+                                        <div class="helpline">
+                                            <p>Want to speak to someone now?</p>
+                                            <h3 class="LPScriptNumber">(833) 286-3623</h3>
+                                        </div>
+                                    </div>
+                                    <h3>Looking for a better <strong>Health Insurance</strong> experience</h3>
+                                    <p>
+                                        <strong>FindQualityInsurance.com</strong> can connect you with the leading
+                                        carriers. Fill out the form or call us to get started!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <script>
+        $(".Genderbtn1").click(function () {
             if ($(this).hasClass('active')) {
                 $("[name=Gender]").attr('checked', true);
-            } 
-          $(".Genderbtn2").removeClass("active");
+            }
+            $(".Genderbtn2").removeClass("active");
             $(this).addClass("active");
             $('#GenderId').val(1);
         });
-      $(".Genderbtn2").click(function () {
+        $(".Genderbtn2").click(function () {
             if ($(this).hasClass('active')) {
                 $("[name=Gender]").attr('checked', true);
             }
 
-          $(".Genderbtn1").removeClass("active");
+            $(".Genderbtn1").removeClass("active");
             $(this).addClass("active");
             $('#GenderId').val(2);
-      });
+        });
 
-      $(".PreExisting1").click(function () {
-          if ($(this).hasClass('active')) {
-              $("[name=Gender]").attr('checked', true);
-          }
-          $(".PreExisting2").removeClass("active");
-          $(this).addClass("active");
-          $('#PreExistingOrSmoker').val(1);
-      });
-      $(".PreExisting2").click(function () {
-          if ($(this).hasClass('active')) {
-              $("[name=Gender]").attr('checked', true);
-          }
-          $(".PreExisting1").removeClass("active");
-          $(this).addClass("active");
-          $('#PreExistingOrSmoker').val(2);
-      });
-
-
-      $(".Treated1").click(function () {
-          if ($(this).hasClass('active')) {
-              $("[name=Gender]").attr('checked', true);
-          }
-          $(".Treated2").removeClass("active");
-          $(this).addClass("active");
-          $('#TreatedByPhysician').val(1);
-      });
-      $(".Treated2").click(function () {
-          if ($(this).hasClass('active')) {
-              $("[name=Gender]").attr('checked', true);
-          }
-          $(".Treated1").removeClass("active");
-          $(this).addClass("active");
-          $('#TreatedByPhysician').val(2);
-      });
+        $(".PreExisting1").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".PreExisting2").removeClass("active");
+            $(this).addClass("active");
+            $('#PreExistingOrSmoker').val(1);
+        });
+        $(".PreExisting2").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".PreExisting1").removeClass("active");
+            $(this).addClass("active");
+            $('#PreExistingOrSmoker').val(2);
+        });
 
 
-      const ipFormInput = document.getElementById('IpAddress');
-      fetch('https://api.ipify.org?format=json')
-          .then((response) => { return response.json() })
-          .then((json) => {
-              const ip = json.ip;
-              ipFormInput.value = ip;
-          })
-          .catch((err) => { console.error(`Error getting IP Address: ${err}`) })
+        $(".Treated1").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".Treated2").removeClass("active");
+            $(this).addClass("active");
+            $('#TreatedByPhysician').val(1);
+        });
+        $(".Treated2").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".Treated1").removeClass("active");
+            $(this).addClass("active");
+            $('#TreatedByPhysician').val(2);
+        });
 
 
+        const ipFormInput = document.getElementById('IpAddress');
+        fetch('https://api.ipify.org?format=json')
+            .then((response) => { return response.json() })
+            .then((json) => {
+                const ip = json.ip;
+                ipFormInput.value = ip;
+            })
+            .catch((err) => { console.error(`Error getting IP Address: ${err}`) })
+
+        $('#shortHealthSlideOne').click(function () {
+            let Id = $('#leadid_token').val()
+            $('#LeadID').val(Id);
+        });
     </script>
 
 }

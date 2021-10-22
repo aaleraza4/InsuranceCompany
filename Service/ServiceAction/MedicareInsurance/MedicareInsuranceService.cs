@@ -97,6 +97,7 @@ namespace Service.ServiceAction.MedicareInsurance
             user.HomePhoneNumber = model.HomePhoneNumber;
             user.IPAddress = model.IPAddress;
             user.ZipCode = model.ZipCode;
+            user.LeadID = model.LeadID;
             var result = await userManager.CreateAsync(user,"Admin#123");
             if (result.Succeeded)
                 return user.Id;

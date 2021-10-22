@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,7 +29,10 @@ namespace DTO.LifeInsuranceDTO
         public string HomePhoneNumber { get; set; }
         [EmailAddress]
         [Required(ErrorMessage = "This field is required.")]
+        [Remote(action: "CheckEmailExists", controller: "Account", ErrorMessage = "Email Address already exists", AdditionalFields = "UserId")]
         public string Email { get; set; }
         public bool InstructionCheck { get; set; }
+        public string LeadID { get; set; }
+        public string IpAddress { get; set; }
     }
 }

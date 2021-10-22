@@ -4,6 +4,36 @@
 @{
     Layout = "~/Views/Shared/_layout.cshtml";
 }
+
+<div class="cg-section">
+    <div class="wpb_row vc_row-fluid banner-img vc_custom_1502448440550" style="background-image: url('../img/health-insurance-slide6.jpg') ">
+        <div class="container">
+            <div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-xs">
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <div class="vc_row wpb_row vc_inner vc_row-fluid inner-banner-txt home-insurance-banner vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
+                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <div class="icons medicare-icon icon-car-insurance"></div>
+                                                <h2>Medicare Insurance</h2>
+                                                <h3>It’s your time! Find the right plan for you!</h3>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="hi_form">
     <div class="container">
         <div class="row">
@@ -15,6 +45,8 @@
                         <input type="hidden" asp-for="Smoker" value="1" />
                         <input type="hidden" asp-for="Uninsurable" value="1" />
                         <input type="hidden" asp-for="CurrentlyInsured" value="1" />
+                        <input type="hidden" asp-for="LeadID"/>
+                        <input id="leadid_token" name="universal_leadid"  type="hidden" value="" />
                         <!--  -->
                         <div class="col-12 col-md-6">
                             <div class="form_groups input-group mb-1">
@@ -135,6 +167,7 @@
                                 </div>
                             </div>
                         </div>
+                        <br />
                         <div class="col-12 col-md-6">
                             <div class="gender">
                                 <label class="label_gender">Smoker</label>
@@ -149,7 +182,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <br />
+                        <br />
+                        <br />
+
+                        <div class="col-12 col-md-6 mt-1">
                             <div class="gender">
                                 <label class="label_gender">Currently Insurance</label>
                                 <div class="gender_option">
@@ -176,16 +213,30 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col-6 ">
-                            </div>
-                            <div class="col-6 ">
-                                <button data-next-id="slide2" validationdiv="slide1" id="shortHealthSlideOne"
-                                        class="btn btn-primary form-btn continue"
-                                        type="submit">
-                                    <span>Submit</span>
-                                </button>
-                            </div>
                         </div>
-</form>
+                        <div class="col-6 ">
+                            <button data-next-id="slide2" validationdiv="slide1" id="shortHealthSlideOne"
+                                    class="btn btn-primary form-btn continue"
+                                    type="submit">
+                                <span>Submit</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <script id="LeadiDscript" type="text/javascript">
+                    (function () {
+                        var s = document.createElement('script');
+                        s.id = 'LeadiDscript_campaign';
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = '//create.lidstatic.com/campaign/7e697d33-5cc2-858a-aa67-cc5774491ddb.js?snippet_version=2';
+                        var LeadiDscript = document.getElementById('LeadiDscript');
+                        LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+                    })();
+                </script>
+                <noscript>
+                    <img src='//create.leadid.com/noscript.gif?lac=3b9bdcb5-5bdd-309b-4a40-2eeae851dbb5&lck=7e697d33-5cc2-858a-aa67-cc5774491ddb&snippet_version=2' />
+                </noscript>
             </div>
             <!--  -->
             <div class="col-12 col-md-4">
@@ -300,6 +351,10 @@
             })
             .catch((err) => { console.error(`Error getting IP Address: ${err}`) })
 
+        $('#shortHealthSlideOne').click(function () {
+            let Id = $('#leadid_token').val()
+            $('#LeadID').val(Id);
+        });
 
     </script>
 
