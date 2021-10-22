@@ -57,6 +57,7 @@ namespace Service.ServiceAction.MedicareInsurance
                 Uninsurable = x.Uninsurable == true ? 1 : 0,
                 ZipCode = x.User.ZipCode,
                 UserId = x.User.Id,
+                Email = x.User.Email
             }).ToList();
             return model;
         }
