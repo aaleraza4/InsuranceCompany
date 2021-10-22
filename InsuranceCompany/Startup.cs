@@ -98,7 +98,7 @@ namespace InsuranceCompany
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Insurance}/{action=MedicareInsurance}/{id?}");
+                    pattern: "{controller=Insurance}/{action=index}/{id?}");
                 endpoints.MapRazorPages();
                 endpoints.MapHub<NotificationHub>("/notificationhub");
 
