@@ -30,10 +30,10 @@ namespace InsuranceCompany.Controllers
         private static string conn = string.Empty;
         private readonly IHubContext<NotificationHub> _hubContext;
         public static int counter = 0;
-        public static int Medcounter = 0;
-        public static int Lifecounter = 0;
+        public static int Healthbit = 1;
+        public static int Medbit = 2;
+        public static int Lifebit = 3;
 
-        NotificationHub NotificationHub = new NotificationHub();
         public SuperAdminController(ILifeInsuranceService lifeInsuranceService,IMedicareInsuranceService medicalInsuranceService,IHealthInsuranceService healthInsuranceService, InsuranceDBContext insuranceDBContext, IConfiguration configuration, IHubContext<NotificationHub> hubContext)
         {
             _healthInsuranceService = healthInsuranceService;
@@ -86,7 +86,7 @@ namespace InsuranceCompany.Controllers
             if (e.Type == SqlNotificationType.Change)
             {
                 counter+=1;
-                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter);
+                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter,Healthbit);
             }
             
         }
@@ -148,12 +148,12 @@ namespace InsuranceCompany.Controllers
             return messages;
         }
 
-        public void dependency_OnChangeMedicalInsurance(object sender, SqlNotificationEventArgs e)
+        private void dependency_OnChangeMedicalInsurance(object sender, SqlNotificationEventArgs e)
         {
             if (e.Type == SqlNotificationType.Change)
             {
-                Medcounter += 1;
-                _hubContext.Clients.All.SendAsync("MedicalInsurance", Medcounter);
+                counter += 1;
+                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter,Medbit);
             }
 
         }
@@ -194,8 +194,8 @@ namespace InsuranceCompany.Controllers
         {
             if (e.Type == SqlNotificationType.Change)
             {
-                Lifecounter += 1;
-                _hubContext.Clients.All.SendAsync("LifeInsurance", Lifecounter);
+                counter += 1;
+                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter,Lifebit);
             }
 
         }

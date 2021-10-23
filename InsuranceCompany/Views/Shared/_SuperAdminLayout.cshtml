@@ -40,11 +40,11 @@
 
             <!-- Nav Item - Dashboard -->
             <!--<li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>-->
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>-->
             <!-- Divider -->
             <!--<hr class="sidebar-divider">-->
             <!-- Nav Item - Charts -->
@@ -71,11 +71,11 @@
 
             <!-- Nav Item - Tables -->
             @*<li class="nav-item">
-                <a class="nav-link" asp-controller="Superadmin" asp-action="FinalExpenseListing">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Final Expense Insurance</span>
-                </a>
-            </li>*@
+                    <a class="nav-link" asp-controller="Superadmin" asp-action="FinalExpenseListing">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Final Expense Insurance</span>
+                    </a>
+                </li>*@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -174,11 +174,11 @@
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>-->
-                                <!-- Counter - Messages -->
-                                <!--<span class="badge badge-danger badge-counter">7</span>
-                            </a>-->
-                            <!-- Dropdown - Messages -->
-                            <!--<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        <!-- Counter - Messages -->
+                        <!--<span class="badge badge-danger badge-counter">7</span>
+                        </a>-->
+                        <!-- Dropdown - Messages -->
+                        <!--<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
@@ -251,12 +251,12 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                     aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
-                                    </a>
-                                </div>
+                                 aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
                         </li>
 
                     </ul>
@@ -337,33 +337,63 @@
     <script src="~/js/datatables-demo.js"></script>
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/lib/signalr/dist/browser/SqlDependencyStart.js"></script>
     <script>
-        
+
         var connection = new signalR.HubConnectionBuilder().withUrl("/notificationhub").build();
-        connection.on("ReceiveNotifiction", function (counter) {
-            $("#notification").text(counter);
-            $('#spandiv').append(" <br />");
-            $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
+        connection.on("ReceiveNotifiction", function (counter, bit) {
+            debugger
+            if (bit == 1) {
+                $("#notification").text(counter);
+                $('#spandiv').append(" <br />");
+                $('#spandiv').append("<span class='font-weight-bold span'id='health' style='font-family: arial; font-size: small'><\span>");
 
-            $(".span").text("New User Submited HealthInsurance Form");
-            getAllMessages();
-        });
-        connection.on("MedicalInsurance", function (counter) {
-            $("#notification").text(counter);
-            $('#spandiv').append(" <br />");
-            $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
+                $(".span").text("New User Submited HealthInsurance Form");
+                getAllMessages();
+                $("#notification").click(function () {
+                    $("#notification").text("");
+                })
+            }
+            else if (bit == 2) {
+                $("#notification").text(counter);
+                $('#spandiv').append(" <br />");
+                $('#spandiv').append("<span class='font-weight-bold span' id='med' style='font-family: arial; font-size: small'><\span>");
 
-            $(".span").text("New User Submited Medical Insurance Form");
-            getAllMessagesforMedicalInsurance();
-        });
-        connection.on("LifeInsurance", function (counter) {
-            $("#notification").text(counter);
-            $('#spandiv').append(" <br />");
-            $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
+                $(".span").text("New User Submited Medical Insurance Form");
+                getAllMessagesforMedicalInsurance();
+                $("#notification").click(function () {
+                    $("#notification").text("");
+                })
+            }
+            else if (bit == 3) {
+                $("#notification").text(counter);
+                $('#spandiv').append(" <br />");
+                $('#spandiv').append("<span class='font-weight-bold span'id='life' style='font-family: arial; font-size: small'><\span>");
 
-            $(".span").text("New User Submited Life Insurance Form");
-            getAllMessagesforLifeInsurance();
+                $(".span").text("New User Submited Life Insurance Form");
+                getAllMessagesforLifeInsurance();
+                $("#notification").click(function () {
+                    $("#notification").text("");
+                })
+            }
+
         });
+        //connection.on("MedicalInsurance", function (counter) {
+        //    $("#notification").text(counter);
+        //    $('#spandiv').append(" <br />");
+        //    $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
+
+        //    $(".span").text("New User Submited Medical Insurance Form");
+        //    getAllMessagesforMedicalInsurance();
+        //});
+        //connection.on("LifeInsurance", function (counter) {
+        //    $("#notification").text(counter);
+        //    $('#spandiv').append(" <br />");
+        //    $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
+
+        //    $(".span").text("New User Submited Life Insurance Form");
+        //    getAllMessagesforLifeInsurance();
+        //});
         connection.start().then(function () {
             console.log("connection started")
 
@@ -371,48 +401,10 @@
             //notifications.onconn();
             getAllMessages();
             getAllMessagesforMedicalInsurance();
-            getAllMessagesforLifeInsurance()
+            getAllMessagesforLifeInsurance();
 
         });
-        function getAllMessages() {
 
-            $.ajax({
-                url: '/SuperAdmin/GetAllMessages',
-                contentType: 'application/html ; charset:utf-8',
-                type: 'GET',
-                dataType: 'html',
-                success: function (result) {
-                    console.log(result);
-
-                }
-            });
-        }
-        function getAllMessagesforMedicalInsurance() {
-
-            $.ajax({
-                url: '/SuperAdmin/GetAllMessagesforMedicalInsurance',
-                contentType: 'application/html ; charset:utf-8',
-                type: 'GET',
-                dataType: 'html',
-                success: function (result) {
-                    console.log(result);
-
-                }
-            });
-        }
-        function getAllMessagesforLifeInsurance() {
-
-            $.ajax({
-                url: '/SuperAdmin/GetAllMessagesforLifeInsurance',
-                contentType: 'application/html ; charset:utf-8',
-                type: 'GET',
-                dataType: 'html',
-                success: function (result) {
-                    console.log(result);
-
-                }
-            });
-        }
     </script>
     @await RenderSectionAsync("Scripts", false)
 </body>
