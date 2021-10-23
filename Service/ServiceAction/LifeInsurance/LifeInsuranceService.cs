@@ -42,6 +42,9 @@ namespace Service.ServiceAction.LifeInsurance
             {
                 GenderId = x.GenderId,
                 Address = x.User.Address,
+                Email = x.User.Email,
+                IpAddress = x.User.IPAddress,
+                LastName = x.User.LastName,
                 FirstName = x.User.FirstName,
                 HomePhoneNumber = x.User.HomePhoneNumber,
                 ZipCode = x.User.ZipCode,

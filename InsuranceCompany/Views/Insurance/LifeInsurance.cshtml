@@ -186,36 +186,41 @@
         </div>
     </div>
 </div>
-<script>
-    $(".Genderbtn1").click(function () {
-        if ($(this).hasClass('active')) {
-            $("[name=Gender]").attr('checked', true);
-        }
-        $(".Genderbtn2").removeClass("active");
-        $(this).addClass("active");
-        $('#GenderId').val(1);
-    });
-    $(".Genderbtn2").click(function () {
-        if ($(this).hasClass('active')) {
-            $("[name=Gender]").attr('checked', true);
-        }
+@section Scripts{
+    <script>
 
-        $(".Genderbtn1").removeClass("active");
-        $(this).addClass("active");
-        $('#GenderId').val(2);
-    });
-    const ipFormInput = document.getElementById('IpAddress');
-    fetch('https://api.ipify.org?format=json')
-        .then((response) => { return response.json() })
-        .then((json) => {
-            const ip = json.ip;
-            ipFormInput.value = ip;
-        })
-        .catch((err) => { console.error(`Error getting IP Address: ${err}`) })
+        $(".Genderbtn1").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
+            $(".Genderbtn2").removeClass("active");
+            $(this).addClass("active");
+            $('#GenderId').val(1);
+        });
+        $(".Genderbtn2").click(function () {
+            if ($(this).hasClass('active')) {
+                $("[name=Gender]").attr('checked', true);
+            }
 
-    $('#shortHealthSlideOne').click(function () {
-        let Id = $('#leadid_token').val()
-        $('#LeadID').val(Id);
-    });
-   
-</script>
+            $(".Genderbtn1").removeClass("active");
+            $(this).addClass("active");
+            $('#GenderId').val(2);
+        });
+
+        const ipFormInput = document.getElementById('IpAddress');
+        fetch('https://api.ipify.org?format=json')
+            .then((response) => { return response.json() })
+            .then((json) => {
+                const ip = json.ip;
+                ipFormInput.value = ip;
+            })
+            .catch((err) => { console.error(`Error getting IP Address: ${err}`) })
+
+        $('#shortHealthSlideOne').click(function () {
+            let Id = $('#leadid_token').val()
+            $('#LeadID').val(Id);
+        });
+
+    </script>
+
+}

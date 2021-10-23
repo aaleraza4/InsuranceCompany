@@ -342,7 +342,7 @@
         var connection = new signalR.HubConnectionBuilder().withUrl("/notificationhub").build();
         var value = parseInt($("#notification").text(), 10);
         connection.on("ReceiveNotifiction", function (counter, bit) {
-            debugger
+           
             var notifyval = counter + value;
             value = notifyval;
             $("#notification").text(notifyval);
@@ -359,7 +359,7 @@
 
         });
         connection.on("MedicalNotifiction", function (counter) {
-            debugger
+          
             var notifyval = counter + value;
             value = notifyval;
             $("#notification").text(notifyval);
@@ -374,7 +374,6 @@
             });
         });
         connection.on("LifeNotifiction", function (counter) {
-            debugger
             var notifyval = counter + value;
             value = notifyval;
             $("#notification").text(notifyval);
