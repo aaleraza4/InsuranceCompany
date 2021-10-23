@@ -30,9 +30,8 @@ namespace InsuranceCompany.Controllers
         private static string conn = string.Empty;
         private readonly IHubContext<NotificationHub> _hubContext;
         public static int counter = 0;
-        public static int Healthbit = 1;
-        public static int Medbit = 2;
-        public static int Lifebit = 3;
+        public static int Medcounter = 0;
+        public static int Lifecounter = 0;
 
         public SuperAdminController(ILifeInsuranceService lifeInsuranceService,IMedicareInsuranceService medicalInsuranceService,IHealthInsuranceService healthInsuranceService, InsuranceDBContext insuranceDBContext, IConfiguration configuration, IHubContext<NotificationHub> hubContext)
         {
@@ -86,7 +85,7 @@ namespace InsuranceCompany.Controllers
             if (e.Type == SqlNotificationType.Change)
             {
                 counter+=1;
-                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter,Healthbit);
+                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter);
             }
             
         }
@@ -152,8 +151,8 @@ namespace InsuranceCompany.Controllers
         {
             if (e.Type == SqlNotificationType.Change)
             {
-                counter += 1;
-                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter,Medbit);
+                Medcounter += 1;
+                _hubContext.Clients.All.SendAsync("MedicalNotifiction", Medcounter);
             }
 
         }
@@ -194,8 +193,8 @@ namespace InsuranceCompany.Controllers
         {
             if (e.Type == SqlNotificationType.Change)
             {
-                counter += 1;
-                _hubContext.Clients.All.SendAsync("ReceiveNotifiction", counter,Lifebit);
+                Lifecounter += 1;
+                _hubContext.Clients.All.SendAsync("LifeNotifiction", Lifecounter);
             }
 
         }

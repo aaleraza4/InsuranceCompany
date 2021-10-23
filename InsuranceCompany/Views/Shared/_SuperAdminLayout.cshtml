@@ -147,7 +147,7 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter" id="notification"></span>
+                                <span class="badge badge-danger badge-counter" id="notification">0</span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -161,8 +161,7 @@
                                             <i class="fas fa-file-alt text-white"></i>
                                         </div>
                                     </div>
-                                    <div id="spandiv">
-                                    </div>
+                                    <div id="notify"></div>
                                 </a>
 
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
@@ -341,59 +340,54 @@
     <script>
 
         var connection = new signalR.HubConnectionBuilder().withUrl("/notificationhub").build();
+        var value = parseInt($("#notification").text(), 10);
         connection.on("ReceiveNotifiction", function (counter, bit) {
             debugger
-            if (bit == 1) {
-                $("#notification").text(counter);
-                $('#spandiv').append(" <br />");
-                $('#spandiv').append("<span class='font-weight-bold span'id='health' style='font-family: arial; font-size: small'><\span>");
+            var notifyval = counter + value;
+            value = notifyval;
+            $("#notification").text(notifyval);
+            $('#notify').append("<br />");
+            $("#notify").append("<div class='row'id=healthdiv></div>");
+            $('#healthdiv').append("<span class='font-weight-bold span'id='healthspan' style='font-family: arial; font-size: small'><\span>");
+            $("#healthspan").text("New Form Submitted");
 
-                $(".span").text("New User Submited HealthInsurance Form");
-                getAllMessages();
-                $("#notification").click(function () {
-                    $("#notification").text("");
-                })
-            }
-            else if (bit == 2) {
-                $("#notification").text(counter);
-                $('#spandiv').append(" <br />");
-                $('#spandiv').append("<span class='font-weight-bold span' id='med' style='font-family: arial; font-size: small'><\span>");
-
-                $(".span").text("New User Submited Medical Insurance Form");
-                getAllMessagesforMedicalInsurance();
-                $("#notification").click(function () {
-                    $("#notification").text("");
-                })
-            }
-            else if (bit == 3) {
-                $("#notification").text(counter);
-                $('#spandiv').append(" <br />");
-                $('#spandiv').append("<span class='font-weight-bold span'id='life' style='font-family: arial; font-size: small'><\span>");
-
-                $(".span").text("New User Submited Life Insurance Form");
-                getAllMessagesforLifeInsurance();
-                $("#notification").click(function () {
-                    $("#notification").text("");
-                })
-            }
+            getAllMessages();
+            $("#alertsDropdown").click(function () {
+                $("#notification").text("");
+            });
+            
 
         });
-        //connection.on("MedicalInsurance", function (counter) {
-        //    $("#notification").text(counter);
-        //    $('#spandiv').append(" <br />");
-        //    $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
+        connection.on("MedicalNotifiction", function (counter) {
+            debugger
+            var notifyval = counter + value;
+            value = notifyval;
+            $("#notification").text(notifyval);
+            $('#notify').append("<br />");
+            $("#notify").append("<div class='row'id=meddiv></div>");
+            $('#meddiv').append("<span class='font-weight-bold span'id='medspan' style='font-family: arial; font-size: small'><\span>");
+            $("#medspan").text("New Form Submitted");
 
-        //    $(".span").text("New User Submited Medical Insurance Form");
-        //    getAllMessagesforMedicalInsurance();
-        //});
-        //connection.on("LifeInsurance", function (counter) {
-        //    $("#notification").text(counter);
-        //    $('#spandiv').append(" <br />");
-        //    $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
+            getAllMessagesforMedicalInsurance();
+            $("#alertsDropdown").click(function () {
+                $("#notification").text("");
+            });
+        });
+        connection.on("LifeNotifiction", function (counter) {
+            debugger
+            var notifyval = counter + value;
+            value = notifyval;
+            $("#notification").text(notifyval);
+            $('#notify').append("<br />");
+            $("#notify").append("<div class='row'id=lifediv></div>");
+            $('#lifediv').append("<span class='font-weight-bold span'id='lifespan' style='font-family: arial; font-size: small'><\span>");
+            $("#lifespan").text("New Form Submitted");
 
-        //    $(".span").text("New User Submited Life Insurance Form");
-        //    getAllMessagesforLifeInsurance();
-        //});
+            getAllMessagesforLifeInsurance();
+            $("#alertsDropdown").click(function () {
+                $("#notification").text("");
+            });
+        });
         connection.start().then(function () {
             console.log("connection started")
 
