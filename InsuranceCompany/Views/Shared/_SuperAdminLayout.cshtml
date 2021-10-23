@@ -342,13 +342,12 @@
 
         var connection = new signalR.HubConnectionBuilder().withUrl("/notificationhub").build();
         connection.on("ReceiveNotifiction", function (counter, bit) {
-            debugger
             if (bit == 1) {
                 $("#notification").text(counter);
                 $('#spandiv').append(" <br />");
                 $('#spandiv').append("<span class='font-weight-bold span'id='health' style='font-family: arial; font-size: small'><\span>");
 
-                $(".span").text("New User Submited HealthInsurance Form");
+                $(".span").text("User Submited Form");
                 getAllMessages();
                 $("#notification").click(function () {
                     $("#notification").text("");
@@ -359,7 +358,7 @@
                 $('#spandiv').append(" <br />");
                 $('#spandiv').append("<span class='font-weight-bold span' id='med' style='font-family: arial; font-size: small'><\span>");
 
-                $(".span").text("New User Submited Medical Insurance Form");
+                $(".span").text("User Submited Form");
                 getAllMessagesforMedicalInsurance();
                 $("#notification").click(function () {
                     $("#notification").text("");
@@ -370,7 +369,7 @@
                 $('#spandiv').append(" <br />");
                 $('#spandiv').append("<span class='font-weight-bold span'id='life' style='font-family: arial; font-size: small'><\span>");
 
-                $(".span").text("New User Submited Life Insurance Form");
+                $(".span").text("User Submited Form");
                 getAllMessagesforLifeInsurance();
                 $("#notification").click(function () {
                     $("#notification").text("");
@@ -378,22 +377,6 @@
             }
 
         });
-        //connection.on("MedicalInsurance", function (counter) {
-        //    $("#notification").text(counter);
-        //    $('#spandiv').append(" <br />");
-        //    $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
-
-        //    $(".span").text("New User Submited Medical Insurance Form");
-        //    getAllMessagesforMedicalInsurance();
-        //});
-        //connection.on("LifeInsurance", function (counter) {
-        //    $("#notification").text(counter);
-        //    $('#spandiv').append(" <br />");
-        //    $('#spandiv').append("<span class='font-weight-bold span' style='font-family: arial; font-size: small'><\span>");
-
-        //    $(".span").text("New User Submited Life Insurance Form");
-        //    getAllMessagesforLifeInsurance();
-        //});
         connection.start().then(function () {
             console.log("connection started")
 

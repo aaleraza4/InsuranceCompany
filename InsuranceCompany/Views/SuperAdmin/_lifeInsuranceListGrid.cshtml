@@ -24,17 +24,17 @@
             {
                 @foreach (var item in Model)
                 {
-            <tr>
-                <td width="5%" class="text-center">@_inc</td>
-                <td>@(item.GenderId==1?"Male":"Female")</td>
-                <td>@item.IpAddress</td>
-                <td>@item.LeadID</td>
-                <td>@item.FirstName</td>
-                <td>@item.LastName</td>
-                <td>@item.HomePhoneNumber</td>
-                <td>@item.Email</td>
-                <td>@item.ZipCode</td>
-            </tr>
+                    <tr>
+                        <td width="5%" class="text-center">@_inc</td>
+                        <td>@(item.GenderId==1?"Male":"Female")</td>
+                        <td>@item.IpAddress</td>
+                        <td>@item.LeadID</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.HomePhoneNumber</td>
+                        <td>@item.Email</td>
+                        <td>@item.ZipCode</td>
+                    </tr>
                     _inc = _inc + 1;
                 }
             }
